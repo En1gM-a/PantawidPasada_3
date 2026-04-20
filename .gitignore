@@ -361,3 +361,31 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+# ============================================================
+# PantawidPasada – Project-specific additions
+# ============================================================
+
+# Excel data exports / reports (not source code)
+*.xlsx
+*.xls
+*.csv
+
+# SQL dump / backup files (keep only schema-creation scripts if added intentionally)
+*dump*.sql
+*backup*.sql
+*export*.sql
+
+# Connection-string / environment config overrides
+appsettings.local.json
+appsettings.Development.json
+db.config
+*.env
+.env
+
+# Rider / JetBrains IDE
+.idea/
+*.sln.iml
+
+# macOS metadata (if ever developed cross-platform)
+.DS_Store
+Thumbs.db

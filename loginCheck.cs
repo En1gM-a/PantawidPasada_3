@@ -51,6 +51,7 @@ namespace PantawidPasada
                             data.LicenseNumber = reader["lic_num"].ToString();
                             data.VehicleType = reader["vehicle_type"].ToString();
                             data.subsidyStatus = reader["subsidy_stats"].ToString();
+                            data.createDay = reader["created_at"].ToString();
 
                             return true;
                         }

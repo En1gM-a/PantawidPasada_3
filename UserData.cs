@@ -11,6 +11,7 @@ namespace PantawidPasada
         public string? MiddleName { get; set; }
         public string Address { get; set; }
         public string Province { get; set; }
+        public string? birthday { get; set; }
 
         // Contact
         public string Phone { get; set; }
@@ -29,5 +30,6 @@ namespace PantawidPasada
         public string LicenseNumber { get; set; }
         public string VehicleType { get; set; }
         public string subsidyStatus { get; set; }
+        public string createDay { get; set; }
     }
 }

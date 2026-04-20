@@ -142,7 +142,10 @@ namespace PantawidPasada
 
         private void accountDriver_Click(object sender, EventArgs e)
         {
-
+            SetActiveButton(accountDriver);
+            driverAccountShow driveracc = new driverAccountShow(userData);
+            panel2.Controls.Clear();
+            panel2.Controls.Add(driveracc);
         }
     }
 }
