@@ -25,6 +25,11 @@ namespace PantawidPasada
         public manageAccAdmin()
         {
             InitializeComponent();
+        }
+
+        public manageAccAdmin(adminAcc acc)
+        {
+            InitializeComponent();
             setUpManageAcc();
 
 
@@ -32,7 +37,29 @@ namespace PantawidPasada
             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             accessAdminGovAccs.LoadAdminsToDataGrid(dataGridView1);
             accessAdminGovAccs.LoadGovsToDataGrid(dataGridView2);
-            
+
+            if (acc.role != "Super Admin")
+            {
+                MakeGridFaded(dataGridView1);
+
+            }
+
+
+        }
+
+        private void MakeGridFaded(DataGridView grid)
+        {
+            grid.Enabled = false;
+
+            grid.DefaultCellStyle.ForeColor = Color.Gray;
+            grid.DefaultCellStyle.SelectionForeColor = Color.Gray;
+            grid.DefaultCellStyle.BackColor = Color.FromArgb(245, 245, 245);
+            grid.DefaultCellStyle.SelectionBackColor = Color.FromArgb(245, 245, 245);
+
+            grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.Gray;
+            grid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(230, 230, 230);
+
+            grid.EnableHeadersVisualStyles = false;
         }
 
         // =========================
@@ -119,7 +146,7 @@ namespace PantawidPasada
         }
         private void LoadAdminDetails(int adminID)
         {
-            string connStr = "server=localhost;user=root;password=karlbensi12345;database=pantawid_pasada;";
+            string connStr = dataBaseDetails.connStr;
 
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
@@ -150,7 +177,7 @@ namespace PantawidPasada
         }
         private void LoadGovDetails(int govID)
         {
-            string connStr = "server=localhost;user=root;password=karlbensi12345;database=pantawid_pasada;";
+            string connStr = dataBaseDetails.connStr;
 
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
@@ -256,7 +283,7 @@ namespace PantawidPasada
 
         private void SaveAdminAccount()
         {
-            string connStr = "server=localhost;user=root;password=karlbensi12345;database=pantawid_pasada;";
+            string connStr = dataBaseDetails.connStr;
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connStr))
@@ -304,7 +331,7 @@ namespace PantawidPasada
         // =========================
         private void SaveGovAccount()
         {
-            string connStr = "server=localhost;user=root;password=karlbensi12345;database=pantawid_pasada;";
+            string connStr = dataBaseDetails.connStr;
 
             // Get selected agency
             string agency = "";
@@ -445,7 +472,7 @@ namespace PantawidPasada
                 return;
             }
 
-            string connStr = "server=localhost;user=root;password=karlbensi12345;database=pantawid_pasada;";
+            string connStr = dataBaseDetails.connStr;
 
             try
             {

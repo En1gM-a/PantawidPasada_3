@@ -12,14 +12,11 @@ namespace PantawidPasada
 
         private personalInfo personalInfo;
         private contact contact;
-        private financialInfo financialInfo;
         private vehicleInfo vehicleInfo;
         private summaryDetails summary;
 
         private UserData userData = new UserData();
         private SaveDataBase saveDataBase = new SaveDataBase();
-
-        
 
         public Form2()
         {
@@ -33,11 +30,6 @@ namespace PantawidPasada
             contact.Dock = DockStyle.Fill;
             contact.Visible = false;
             panel1.Controls.Add(contact);
-
-            financialInfo = new financialInfo();
-            financialInfo.Dock = DockStyle.Fill;
-            financialInfo.Visible = false;
-            panel1.Controls.Add(financialInfo);
 
             vehicleInfo = new vehicleInfo();
             vehicleInfo.Dock = DockStyle.Fill;
@@ -53,7 +45,6 @@ namespace PantawidPasada
             {
                 personalInfo,
                 contact,
-                financialInfo,
                 vehicleInfo,
                 summary
             };
@@ -73,7 +64,7 @@ namespace PantawidPasada
                 uc.Visible = false;
 
             steps[index].Visible = true;
-            steps[index].BringToFront(); // 🔥 THIS IS THE FIX
+            steps[index].BringToFront();
 
             prev.Enabled = index != 0;
             next.Text = (index == steps.Length - 1) ? "Finish" : "Next";
@@ -82,35 +73,25 @@ namespace PantawidPasada
             next.BackColor = Color.FromArgb(244, 196, 48);
 
             progressBar1.Value = index;
-            
-
         }
 
         private void next_Click(object sender, EventArgs e)
         {
-            // 🔥 SAVE DATA BEFORE MOVING
             if (steps[currentStep] == personalInfo)
                 personalInfo.FillData(userData);
 
             else if (steps[currentStep] == contact)
                 contact.FillData(userData);
 
-            else if (steps[currentStep] == financialInfo)
-                financialInfo.FillData(userData);
-
             else if (steps[currentStep] == vehicleInfo)
                 vehicleInfo.FillData(userData);
 
-            // 🔥 MOVE STEP
             if (currentStep < steps.Length - 1)
             {
                 currentStep++;
 
-                // 🔥 IF GOING TO SUMMARY → LOAD DATA
                 if (steps[currentStep] == summary)
-                {
                     summary.LoadData(userData);
-                }
 
                 ShowStep(currentStep);
             }
@@ -118,10 +99,10 @@ namespace PantawidPasada
             {
                 saveDataBase.SaveToDB(userData);
                 MessageBox.Show(
-                "Sign up successful! Please log in to continue.",
-                "Account Created",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+                    "Sign up successful! Please log in to continue.",
+                    "Account Created",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
                 this.Hide();
                 Form1 form1 = new Form1();
                 form1.ShowDialog();

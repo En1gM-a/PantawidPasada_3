@@ -14,7 +14,7 @@ namespace PantawidPasada
         public double unleadedPrice { get; set; }
         public double premUnleadedPrice { get; set; }
 
-        string connStr = "server=localhost;user id=root;password=karlbensi12345;database=pantawid_pasada;";
+        string connStr = dataBaseDetails.connStr;
 
         // =========================
         // SAVE TO DATABASE

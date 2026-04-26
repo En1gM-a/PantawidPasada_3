@@ -25,17 +25,12 @@ namespace PantawidPasada
             numberUser.Text = data.Phone;
             eMail.Text = data.Email;
             // Financial Info
-            inCome.Text = data.Income;
-            incomeOther.Text = data.SourceOfIncome;
-            finanOb.Text = data.FinancialObligation;
-            employMent.Text = data.EmploymentType;
-            // Vehicle Info
-            numPlate.Text = data.PlateNumber;
-            noLic.Text = data.LicenseNumber;
-            vecType.Text = data.VehicleType;
-
-
             
+            label7.Text = data.PlateNumber;
+            label9.Text = data.VehicleType;
+            label11.Text = data.LicenseNumber;
+
+
             label15.Text = data.username;
             
             textBox1.Text = data.Password ;

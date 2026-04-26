@@ -6,7 +6,7 @@ namespace PantawidPasada
 {
     public class loginCheck
     {
-        private string connStr = "server=localhost;user id=root;password=karlbensi12345;database=pantawid_pasada;";
+        private string connStr = dataBaseDetails.connStr;
         UserData userData = new UserData();
         adminAcc adminData = new adminAcc();
         govData dataGov = new govData();
@@ -95,6 +95,7 @@ namespace PantawidPasada
                             data.MiddleInit = reader["MiddleInitial"].ToString();
                             data.role = reader["RoleAdmin"].ToString();
                             data.username = reader["UsernameAdmin"].ToString();
+                            
 
                             if (reader["adminStatus"].ToString() == "Deactivated")
                             {
@@ -173,6 +174,59 @@ namespace PantawidPasada
             }
         }
 
+        protected bool CheckLoginFuelEditor(string? username, string? password, fuelEditorData data)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    conn.Open();
+
+                    string query = @"
+                SELECT * 
+                FROM fuelEditors 
+                WHERE username = @username 
+                AND password = @password";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@username", username);
+                    cmd.Parameters.AddWithValue("@password", password);
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+
+                            // 🔥 Fill object
+                            data.editor_id = Convert.ToInt32(reader["editor_id"]);
+                            data.name = reader["name"].ToString();
+                            data.username = reader["username"].ToString();
+                            data.status = reader["status"].ToString();
+
+                            // 🔥 Check status
+                            if (data.status == "Deactivated")
+                            {
+                                LoginError = "deactivated";
+                                return false;
+                            }
+
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error checking fuel editor login: " + ex.Message);
+                return false;
+            }
+        }
+
         public bool loginUser(string? user, string? pass, UserData data)
         {
             return CheckLoginUser(user, pass, data);
@@ -185,6 +239,11 @@ namespace PantawidPasada
         public bool loginGov(string? user, string? pass, govData data)
         {
             return CheckLoginGov(user, pass, data);
+        }
+
+        public bool loginFuelEditor(string? user, string? pass, fuelEditorData data)
+        {
+            return CheckLoginFuelEditor(user, pass, data);
         }
     }
 }

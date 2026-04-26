@@ -10,7 +10,7 @@ namespace PantawidPasada
     {
         private void LoadAdmins(DataGridView datagrid)
         {
-            string connStr = "server=localhost;user=root;password=karlbensi12345;database=pantawid_pasada;";
+            string connStr = dataBaseDetails.connStr;
 
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
@@ -40,9 +40,11 @@ namespace PantawidPasada
             }
         }
 
+
+
         private void LoadGovs(DataGridView datagrid)
         {
-            string connStr = "server=localhost;user=root;password=karlbensi12345;database=pantawid_pasada;";
+            string connStr = dataBaseDetails.connStr;
 
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {

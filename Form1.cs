@@ -207,10 +207,11 @@ namespace PantawidPasada
             UserData currentUser = new UserData();
             adminAcc currentAdmin = new adminAcc();
             govData currentGov = new govData();
+            fuelEditorData currentFuel = new fuelEditorData();
 
             bool isLoggedIn;
             
-            if(username.Contains("admin@"))
+            if(username.Contains("admin@") || username.Contains("superadmin"))
             {
                 isLoggedIn = auth.loginAdmin(username, password, currentAdmin);
             }
@@ -218,11 +219,17 @@ namespace PantawidPasada
             {
                 isLoggedIn = auth.loginGov(username, password, currentGov);
             }
+            else if(username.Contains("editor"))
+            {
+                isLoggedIn = auth.loginFuelEditor(username, password, currentFuel);
+            }
             else
             {
                 isLoggedIn = auth.loginUser(username, password, currentUser);
             }
-            bool isAdmin = usernameLogin.Text.Contains("admin@");
+            bool isAdmin = usernameLogin.Text.Contains("admin@")||usernameLogin.Text.Contains("superadmin");
+            bool isFuel = usernameLogin.Text.Contains("editor");
+
             bool isGov = usernameLogin.Text.Contains("gov@");
 
             if (isLoggedIn)
@@ -241,6 +248,12 @@ namespace PantawidPasada
                     governmentPanel.ShowDialog();
                     this.Close();
 
+                }
+                else if(isFuel)
+                {
+                    homePetroncs fuelPanel = new homePetroncs(currentFuel);
+                    fuelPanel.ShowDialog();
+                    this.Close();
                 }
                 else
                 {

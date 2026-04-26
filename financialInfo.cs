@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -7,6 +8,10 @@ namespace PantawidPasada
 {
     public partial class financialInfo : UserControl
     {
+
+        private UserData userData;
+        private financialInfo financialInfoControl;
+
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn(
         int nLeftRect, int nTopRect,
@@ -14,10 +19,18 @@ namespace PantawidPasada
         int nWidthEllipse, int nHeightEllipse
         );
 
+
+
         public financialInfo()
+        {
+            
+        }
+        public financialInfo(UserData data)
         {
             InitializeComponent();
             setUpFinancialInfo();
+            
+            userData = data;
         }
 
         // =========================
@@ -85,5 +98,40 @@ namespace PantawidPasada
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            financialInfoControl.FillData(userData);
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(dataBaseDetails.connStr))
+                {
+                    conn.Open();
+
+                    string query = @"UPDATE driverAccs 
+                                     SET income = @income,
+                                         employment_type = @employment,
+                                         source_of_income = @source,
+                                         finan_ob = @obligation
+                                     WHERE usernameUser = @username";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@income", userData.Income);
+                    cmd.Parameters.AddWithValue("@employment", userData.EmploymentType);
+                    cmd.Parameters.AddWithValue("@source", userData.SourceOfIncome);
+                    cmd.Parameters.AddWithValue("@obligation", userData.FinancialObligation);
+                    cmd.Parameters.AddWithValue("@username", userData.username);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        
+    
+    }
     }
 }

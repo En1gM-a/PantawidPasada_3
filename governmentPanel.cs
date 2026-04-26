@@ -24,6 +24,7 @@ namespace PantawidPasada
             slantedButton.MakeSlanted(subAppGov);
             slantedButton.MakeSlanted(accButtonGov);
             slantedButton.MakeSlanted(logoutButton);
+            slantedButton.MakeSlanted(manageSubButton);
 
             dataGov = data;
 
@@ -70,6 +71,14 @@ namespace PantawidPasada
             Form1 loginForm = new Form1();
             loginForm.ShowDialog();
             this.Close();
+        }
+
+        private void manageSubButton_Click(object sender, EventArgs e)
+        {
+            SetActiveButton(manageSubButton);
+            manageSubsidy manageSub = new manageSubsidy();
+            panel2.Controls.Clear();
+            panel2.Controls.Add(manageSub);
         }
 
         private void homeButtonGov_MouseHover(object sender, EventArgs e)
@@ -120,6 +129,16 @@ namespace PantawidPasada
                 logoutButton.BackColor = Color.FromArgb(30, 58, 95); // reset to default
         }
 
-        
+        private void manageSubButton_MouseHover(object sender, EventArgs e)
+        {
+            if (activeButton != manageSubButton)
+                manageSubButton.BackColor = Color.FromArgb(255, 210, 90);
+        }
+
+        private void manageSubButton_MouseLeave(object sender, EventArgs e)
+        {
+            if (activeButton != manageSubButton)
+                manageSubButton.BackColor = Color.FromArgb(30, 58, 95); // reset to default
+        }
     }
 }

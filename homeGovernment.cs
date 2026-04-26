@@ -59,7 +59,7 @@ namespace PantawidPasada
 
         private void loadDataDriverPending()
         {
-            string connStr = "server=localhost;user=root;password=karlbensi12345;database=pantawid_pasada;";
+            string connStr = dataBaseDetails.connStr;
 
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
@@ -88,7 +88,7 @@ namespace PantawidPasada
 
         private void loadDataDriverApproved()
         {
-            string connStr = "server=localhost;user=root;password=karlbensi12345;database=pantawid_pasada;";
+            string connStr = dataBaseDetails.connStr;
 
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
@@ -117,7 +117,7 @@ namespace PantawidPasada
 
         private void loadDataDriverOnHold()
         {
-            string connStr = "server=localhost;user=root;password=karlbensi12345;database=pantawid_pasada;";
+            string connStr = dataBaseDetails.connStr;
 
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
@@ -146,7 +146,7 @@ namespace PantawidPasada
 
         private void loadDataDriverUnderReview()
         {
-            string connStr = "server=localhost;user=root;password=karlbensi12345;database=pantawid_pasada;";
+            string connStr = dataBaseDetails.connStr;
 
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {

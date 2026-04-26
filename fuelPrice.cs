@@ -7,12 +7,16 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 
+
 namespace PantawidPasada
 {
     public partial class fuelPrice : UserControl
     {
         fuelPricewithStation fuelData = new fuelPricewithStation();
         forGraph graphData = new forGraph();
+        private System.Windows.Forms.Timer hideGraphTimer;
+
+        
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn(
@@ -25,6 +29,11 @@ namespace PantawidPasada
         {
             InitializeComponent();
             setFuelPrice();
+            panel9.BackColor = Color.WhiteSmoke;
+
+            hideGraphTimer = new System.Windows.Forms.Timer();
+            hideGraphTimer.Interval = 300;
+            hideGraphTimer.Tick += HideGraphTimer_Tick;
         }
 
         // =========================
@@ -55,12 +64,11 @@ namespace PantawidPasada
         {
             StylePanel(panel2, 20);
             StylePanel(panel3, 20);
+            StylePanel(panel9, 20);
             setFuelPrice();
             LoadMostRecentPrices();
 
-            panel9.Parent = this;
-            cartesianChart1.Parent = panel9;
-            panel9.Location = new Point(pictureBox2.Left + pictureBox2.Width + 10, pictureBox2.Top);
+            
         }
 
         // =========================
@@ -117,6 +125,7 @@ namespace PantawidPasada
         // =========================
         // LOAD MOST RECENT PRICES
         // =========================
+
         private void LoadMostRecentPrices()
         {
             try
@@ -153,6 +162,17 @@ namespace PantawidPasada
             }
         }
 
+        private void HideGraphTimer_Tick(object sender, EventArgs e)
+        {
+            Point cursor = panel9.PointToClient(Cursor.Position);
+
+            if (!panel9.ClientRectangle.Contains(cursor))
+            {
+                panel9.Visible = false;
+                hideGraphTimer.Stop();
+            }
+        }
+
         // =========================
         // SET CHANGE LABEL
         // =========================
@@ -174,14 +194,13 @@ namespace PantawidPasada
 
             panel9.BringToFront();
             cartesianChart1.BringToFront();
+            cartesianChart1.Dock = DockStyle.Fill;
             panel9.Visible = true;
         }
 
         private void pictureBox2_MouseLeave(object sender, EventArgs e)
         {
-            Point cursor = panel9.PointToClient(Cursor.Position);
-            if (!panel9.ClientRectangle.Contains(cursor))
-                panel9.Visible = false;
+            hideGraphTimer.Start();
         }
 
         private void pictureBox3_MouseEnter(object sender, EventArgs e)
@@ -190,14 +209,13 @@ namespace PantawidPasada
 
             panel9.BringToFront();
             cartesianChart1.BringToFront();
+            cartesianChart1.Dock = DockStyle.Fill;
             panel9.Visible = true;
         }
 
         private void pictureBox3_MouseLeave(object sender, EventArgs e)
         {
-            Point cursor = panel9.PointToClient(Cursor.Position);
-            if (!panel9.ClientRectangle.Contains(cursor))
-                panel9.Visible = false;
+            hideGraphTimer.Start();
         }
 
         private void pictureBox1_MouseEnter(object sender, EventArgs e)
@@ -206,14 +224,13 @@ namespace PantawidPasada
 
             panel9.BringToFront();
             cartesianChart1.BringToFront();
+            cartesianChart1.Dock = DockStyle.Fill;
             panel9.Visible = true;
         }
 
         private void pictureBox1_MouseLeave(object sender, EventArgs e)
         {
-            Point cursor = panel9.PointToClient(Cursor.Position);
-            if (!panel9.ClientRectangle.Contains(cursor))
-                panel9.Visible = false;
+            hideGraphTimer.Start();
         }
 
         private void pictureBox4_MouseEnter(object sender, EventArgs e)
@@ -222,14 +239,13 @@ namespace PantawidPasada
 
             panel9.BringToFront();
             cartesianChart1.BringToFront();
+            cartesianChart1.Dock = DockStyle.Fill;
             panel9.Visible = true;
         }
 
         private void pictureBox4_MouseLeave(object sender, EventArgs e)
         {
-            Point cursor = panel9.PointToClient(Cursor.Position);
-            if (!panel9.ClientRectangle.Contains(cursor))
-                panel9.Visible = false;
+            hideGraphTimer.Start();
         }
     }
 }

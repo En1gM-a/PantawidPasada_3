@@ -1,13 +1,13 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 
 using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.WinForms;
 using LiveChartsCore.SkiaSharpView.Painting;
+using LiveChartsCore.Measure;
 using SkiaSharp;
 
 namespace PantawidPasada
@@ -16,7 +16,7 @@ namespace PantawidPasada
     {
         public void SetupPriceChart(CartesianChart chart, string brand)
         {
-            string connStr = "server=localhost;user=root;password=karlbensi12345;database=pantawid_pasada;";
+            string connStr = dataBaseDetails.connStr;
 
             var dieselValues = new List<double>();
             var unleadedValues = new List<double>();
@@ -58,6 +58,9 @@ namespace PantawidPasada
                 return;
             }
 
+            // =========================
+            // SERIES (WITH COLORS + LEGEND NAMES)
+            // =========================
             chart.Series = new ISeries[]
             {
                 new LineSeries<double>
@@ -65,6 +68,7 @@ namespace PantawidPasada
                     Name = "Diesel",
                     Values = dieselValues,
                     GeometrySize = 8,
+                    Stroke = new SolidColorPaint(SKColors.Red, 3),
                     Fill = null
                 },
                 new LineSeries<double>
@@ -72,6 +76,7 @@ namespace PantawidPasada
                     Name = "Unleaded",
                     Values = unleadedValues,
                     GeometrySize = 8,
+                    Stroke = new SolidColorPaint(SKColors.Blue, 3),
                     Fill = null
                 },
                 new LineSeries<double>
@@ -79,10 +84,14 @@ namespace PantawidPasada
                     Name = "Premium",
                     Values = premValues,
                     GeometrySize = 8,
+                    Stroke = new SolidColorPaint(SKColors.Green, 3),
                     Fill = null
                 }
             };
 
+            // =========================
+            // X AXIS (DATES)
+            // =========================
             chart.XAxes = new Axis[]
             {
                 new Axis
@@ -94,19 +103,33 @@ namespace PantawidPasada
                 }
             };
 
+            // =========================
+            // Y AXIS (INCREMENT = 1 FIX)
+            // =========================
             chart.YAxes = new Axis[]
             {
                 new Axis
                 {
                     Name = "Price (₱)",
-                    TextSize = 12
+                    TextSize = 12,
+
+                    // 🔥 THIS IS THE IMPORTANT PART
+                    MinStep = 1
                 }
             };
 
+            // =========================
+            // LEGEND
+            // =========================
+            chart.LegendPosition = LegendPosition.Right;
+
+            // =========================
+            // TOOLTIP
+            // =========================
             chart.TooltipPosition = LiveChartsCore.Measure.TooltipPosition.Top;
         }
 
-        // 🔥 SAFE CONVERTER (prevents crashes)
+        // SAFE CONVERTER
         private double SafeDouble(object value)
         {
             return value == DBNull.Value ? 0 : Convert.ToDouble(value);

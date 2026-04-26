@@ -70,7 +70,7 @@ namespace PantawidPasada
 
         private void LoadDriverDetails(int driverId)
         {
-            string connStr = "server=localhost;user=root;password=karlbensi12345;database=pantawid_pasada;";
+            string connStr = dataBaseDetails.connStr;
 
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
@@ -167,7 +167,7 @@ namespace PantawidPasada
             if (confirm != DialogResult.Yes) return;
 
             // Update the database
-            string connStr = "server=localhost;user=root;password=karlbensi12345;database=pantawid_pasada;";
+            string connStr = dataBaseDetails.connStr;
 
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
@@ -216,7 +216,7 @@ namespace PantawidPasada
             if (confirm != DialogResult.Yes) return;
 
             // Update the database
-            string connStr = "server=localhost;user=root;password=karlbensi12345;database=pantawid_pasada;";
+            string connStr = dataBaseDetails.connStr;
 
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
@@ -265,7 +265,7 @@ namespace PantawidPasada
             if (confirm != DialogResult.Yes) return;
 
             // Update the database
-            string connStr = "server=localhost;user=root;password=karlbensi12345;database=pantawid_pasada;";
+            string connStr = dataBaseDetails.connStr;
 
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
@@ -314,7 +314,7 @@ namespace PantawidPasada
             if (confirm != DialogResult.Yes) return;
 
             // Update the database
-            string connStr = "server=localhost;user=root;password=karlbensi12345;database=pantawid_pasada;";
+            string connStr = dataBaseDetails.connStr;
 
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {

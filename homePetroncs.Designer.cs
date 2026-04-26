@@ -1,6 +1,6 @@
 ﻿namespace PantawidPasada
 {
-    partial class governmentPanel
+    partial class homePetroncs
     {
         /// <summary>
         /// Required designer variable.
@@ -28,79 +28,96 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(governmentPanel));
             panel1 = new Panel();
-            manageSubButton = new Button();
+            pictureBox3 = new PictureBox();
+            label7 = new Label();
+            label6 = new Label();
             label5 = new Label();
             label4 = new Label();
             logoutButton = new Button();
-            accButtonGov = new Button();
-            subAppGov = new Button();
-            homeButtonGov = new Button();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
             pictureBox1 = new PictureBox();
             panel2 = new Panel();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.Controls.Add(manageSubButton);
+            panel1.Controls.Add(pictureBox3);
+            panel1.Controls.Add(label7);
+            panel1.Controls.Add(label6);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(logoutButton);
-            panel1.Controls.Add(accButtonGov);
-            panel1.Controls.Add(subAppGov);
-            panel1.Controls.Add(homeButtonGov);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(pictureBox1);
             panel1.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            panel1.Location = new Point(1, 0);
+            panel1.Location = new Point(0, -1);
             panel1.Name = "panel1";
             panel1.Size = new Size(533, 1043);
-            panel1.TabIndex = 2;
+            panel1.TabIndex = 1;
             // 
-            // manageSubButton
+            // pictureBox3
             // 
-            manageSubButton.FlatAppearance.BorderSize = 0;
-            manageSubButton.FlatStyle = FlatStyle.Flat;
-            manageSubButton.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            manageSubButton.ForeColor = Color.White;
-            manageSubButton.Location = new Point(173, 621);
-            manageSubButton.Name = "manageSubButton";
-            manageSubButton.Size = new Size(360, 91);
-            manageSubButton.TabIndex = 11;
-            manageSubButton.Text = "Manage Subsidy";
-            manageSubButton.UseVisualStyleBackColor = true;
-            manageSubButton.Click += manageSubButton_Click;
-            manageSubButton.MouseLeave += manageSubButton_MouseLeave;
-            manageSubButton.MouseHover += manageSubButton_MouseHover;
+            pictureBox3.Location = new Point(12, 367);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(296, 245);
+            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox3.TabIndex = 14;
+            pictureBox3.TabStop = false;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.BackColor = Color.Transparent;
+            label7.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.ForeColor = Color.DimGray;
+            label7.Location = new Point(440, 874);
+            label7.Name = "label7";
+            label7.Size = new Size(93, 30);
+            label7.TabIndex = 13;
+            label7.Text = "Log Out";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.BackColor = Color.Transparent;
+            label6.Font = new Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.White;
+            label6.Location = new Point(171, 615);
+            label6.Name = "label6";
+            label6.Size = new Size(362, 86);
+            label6.TabIndex = 12;
+            label6.Text = "Dashboard";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.ForeColor = Color.DimGray;
-            label5.Location = new Point(173, 784);
+            label5.BackColor = Color.Transparent;
+            label5.Font = new Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.White;
+            label5.Location = new Point(296, 529);
             label5.Name = "label5";
-            label5.Size = new Size(95, 30);
-            label5.TabIndex = 10;
-            label5.Text = "Account";
+            label5.Size = new Size(237, 86);
+            label5.TabIndex = 11;
+            label5.Text = "Petron";
             // 
             // label4
             // 
             label4.AutoSize = true;
+            label4.BackColor = Color.Transparent;
             label4.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.DimGray;
-            label4.Location = new Point(173, 397);
+            label4.Location = new Point(467, 499);
             label4.Name = "label4";
             label4.Size = new Size(63, 30);
-            label4.TabIndex = 9;
+            label4.TabIndex = 10;
             label4.Text = "Main";
             // 
             // logoutButton
@@ -109,7 +126,7 @@
             logoutButton.FlatStyle = FlatStyle.Flat;
             logoutButton.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             logoutButton.ForeColor = Color.White;
-            logoutButton.Location = new Point(173, 914);
+            logoutButton.Location = new Point(173, 907);
             logoutButton.Name = "logoutButton";
             logoutButton.Size = new Size(360, 47);
             logoutButton.TabIndex = 8;
@@ -118,53 +135,6 @@
             logoutButton.Click += logoutButton_Click;
             logoutButton.MouseLeave += logoutButton_MouseLeave;
             logoutButton.MouseHover += logoutButton_MouseHover;
-            // 
-            // accButtonGov
-            // 
-            accButtonGov.FlatAppearance.BorderSize = 0;
-            accButtonGov.FlatStyle = FlatStyle.Flat;
-            accButtonGov.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            accButtonGov.ForeColor = Color.White;
-            accButtonGov.Location = new Point(173, 817);
-            accButtonGov.Name = "accButtonGov";
-            accButtonGov.Size = new Size(360, 91);
-            accButtonGov.TabIndex = 7;
-            accButtonGov.Text = "Account";
-            accButtonGov.UseVisualStyleBackColor = true;
-            accButtonGov.MouseLeave += accButtonGov_MouseLeave;
-            accButtonGov.MouseHover += accButtonGov_MouseHover;
-            // 
-            // subAppGov
-            // 
-            subAppGov.FlatAppearance.BorderSize = 0;
-            subAppGov.FlatStyle = FlatStyle.Flat;
-            subAppGov.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            subAppGov.ForeColor = Color.White;
-            subAppGov.Location = new Point(173, 524);
-            subAppGov.Name = "subAppGov";
-            subAppGov.Size = new Size(360, 91);
-            subAppGov.TabIndex = 5;
-            subAppGov.Text = "Subsidy Applications";
-            subAppGov.UseVisualStyleBackColor = true;
-            subAppGov.Click += subAppGov_Click;
-            subAppGov.MouseLeave += subAppGov_MouseLeave;
-            subAppGov.MouseHover += subAppGov_MouseHover;
-            // 
-            // homeButtonGov
-            // 
-            homeButtonGov.FlatAppearance.BorderSize = 0;
-            homeButtonGov.FlatStyle = FlatStyle.Flat;
-            homeButtonGov.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            homeButtonGov.ForeColor = Color.White;
-            homeButtonGov.Location = new Point(173, 430);
-            homeButtonGov.Name = "homeButtonGov";
-            homeButtonGov.Size = new Size(360, 91);
-            homeButtonGov.TabIndex = 4;
-            homeButtonGov.Text = "Home";
-            homeButtonGov.UseVisualStyleBackColor = true;
-            homeButtonGov.Click += homeButtonGov_Click;
-            homeButtonGov.MouseLeave += homeButtonGov_MouseLeave;
-            homeButtonGov.MouseHover += homeButtonGov_MouseHover;
             // 
             // label3
             // 
@@ -184,9 +154,9 @@
             label2.ForeColor = Color.White;
             label2.Location = new Point(3, 97);
             label2.Name = "label2";
-            label2.Size = new Size(235, 86);
+            label2.Size = new Size(289, 86);
             label2.TabIndex = 1;
-            label2.Text = "PANEL";
+            label2.Text = "PASADA";
             // 
             // label1
             // 
@@ -196,13 +166,13 @@
             label1.ForeColor = Color.White;
             label1.Location = new Point(3, 11);
             label1.Name = "label1";
-            label1.Size = new Size(486, 86);
+            label1.Size = new Size(376, 86);
             label1.TabIndex = 0;
-            label1.Text = "GOVERNMENT";
+            label1.Text = "PANTAWID";
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Image = Properties.Resources.Untitled__261_x_112_px_;
             pictureBox1.Location = new Point(265, 122);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(268, 234);
@@ -212,23 +182,23 @@
             // 
             // panel2
             // 
-            panel2.Location = new Point(534, 0);
+            panel2.Location = new Point(533, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1370, 1043);
-            panel2.TabIndex = 3;
+            panel2.Size = new Size(1371, 1042);
+            panel2.TabIndex = 2;
             // 
-            // governmentPanel
+            // homePetroncs
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1904, 1041);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            Name = "governmentPanel";
-            Text = "governmentPanel";
-            Load += governmentPanel_Load;
+            Name = "homePetroncs";
+            Text = "homePetroncs";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
@@ -236,17 +206,16 @@
         #endregion
 
         private Panel panel1;
-        private Label label5;
         private Label label4;
         private Button logoutButton;
-        private Button accButtonGov;
-        private Button subAppGov;
-        private Button homeButtonGov;
         private Label label3;
         private Label label2;
         private Label label1;
         private PictureBox pictureBox1;
+        private Label label6;
+        private Label label5;
         private Panel panel2;
-        private Button manageSubButton;
+        private Label label7;
+        private PictureBox pictureBox3;
     }
 }

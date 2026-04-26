@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            LiveChartsCore.SkiaSharpView.SKCharts.SKDefaultLegend skDefaultLegend1 = new LiveChartsCore.SkiaSharpView.SKCharts.SKDefaultLegend();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fuelPrice));
-            LiveChartsCore.Drawing.Padding padding1 = new LiveChartsCore.Drawing.Padding();
-            LiveChartsCore.SkiaSharpView.SKCharts.SKDefaultTooltip skDefaultTooltip1 = new LiveChartsCore.SkiaSharpView.SKCharts.SKDefaultTooltip();
-            LiveChartsCore.Drawing.Padding padding2 = new LiveChartsCore.Drawing.Padding();
+            LiveChartsCore.SkiaSharpView.SKCharts.SKDefaultLegend skDefaultLegend2 = new LiveChartsCore.SkiaSharpView.SKCharts.SKDefaultLegend();
+            LiveChartsCore.Drawing.Padding padding3 = new LiveChartsCore.Drawing.Padding();
+            LiveChartsCore.SkiaSharpView.SKCharts.SKDefaultTooltip skDefaultTooltip2 = new LiveChartsCore.SkiaSharpView.SKCharts.SKDefaultTooltip();
+            LiveChartsCore.Drawing.Padding padding4 = new LiveChartsCore.Drawing.Padding();
             panel1 = new Panel();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
             panel2 = new Panel();
-            panel9 = new Panel();
-            cartesianChart1 = new LiveChartsCore.SkiaSharpView.WinForms.CartesianChart();
             label45 = new Label();
             label44 = new Label();
             label4 = new Label();
+            panel9 = new Panel();
+            cartesianChart1 = new LiveChartsCore.SkiaSharpView.WinForms.CartesianChart();
             panel3 = new Panel();
             panel8 = new Panel();
             pictureBox4 = new PictureBox();
@@ -150,7 +150,6 @@
             // panel2
             // 
             panel2.BackColor = Color.Khaki;
-            panel2.Controls.Add(panel9);
             panel2.Controls.Add(label45);
             panel2.Controls.Add(label44);
             panel2.Controls.Add(label4);
@@ -158,56 +157,6 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(1130, 122);
             panel2.TabIndex = 1;
-            // 
-            // panel9
-            // 
-            panel9.Controls.Add(cartesianChart1);
-            panel9.Location = new Point(204, 4);
-            panel9.Name = "panel9";
-            panel9.Size = new Size(553, 284);
-            panel9.TabIndex = 9;
-            panel9.Visible = false;
-            // 
-            // cartesianChart1
-            // 
-            cartesianChart1.AutoUpdateEnabled = true;
-            cartesianChart1.ChartTheme = null;
-            skDefaultLegend1.AnimationsSpeed = TimeSpan.Parse("00:00:00.1500000");
-            skDefaultLegend1.Content = null;
-            skDefaultLegend1.IsValid = false;
-            skDefaultLegend1.Opacity = 1F;
-            padding1.Bottom = 0F;
-            padding1.Left = 0F;
-            padding1.Right = 0F;
-            padding1.Top = 0F;
-            skDefaultLegend1.Padding = padding1;
-            skDefaultLegend1.RemoveOnCompleted = false;
-            skDefaultLegend1.RotateTransform = 0F;
-            skDefaultLegend1.X = 0F;
-            skDefaultLegend1.Y = 0F;
-            cartesianChart1.Legend = skDefaultLegend1;
-            cartesianChart1.Location = new Point(1, 2);
-            cartesianChart1.MatchAxesScreenDataRatio = false;
-            cartesianChart1.Name = "cartesianChart1";
-            cartesianChart1.Size = new Size(549, 282);
-            cartesianChart1.TabIndex = 0;
-            skDefaultTooltip1.AnimationsSpeed = TimeSpan.Parse("00:00:00.1500000");
-            skDefaultTooltip1.Content = null;
-            skDefaultTooltip1.IsValid = false;
-            skDefaultTooltip1.Opacity = 1F;
-            padding2.Bottom = 0F;
-            padding2.Left = 0F;
-            padding2.Right = 0F;
-            padding2.Top = 0F;
-            skDefaultTooltip1.Padding = padding2;
-            skDefaultTooltip1.RemoveOnCompleted = false;
-            skDefaultTooltip1.RotateTransform = 0F;
-            skDefaultTooltip1.Wedge = 10;
-            skDefaultTooltip1.X = 0F;
-            skDefaultTooltip1.Y = 0F;
-            cartesianChart1.Tooltip = skDefaultTooltip1;
-            cartesianChart1.TooltipFindingStrategy = LiveChartsCore.Measure.TooltipFindingStrategy.Automatic;
-            cartesianChart1.UpdaterThrottler = TimeSpan.Parse("00:00:00.0500000");
             // 
             // label45
             // 
@@ -240,6 +189,56 @@
             label4.Size = new Size(7, 120);
             label4.TabIndex = 0;
             label4.Text = "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n";
+            // 
+            // panel9
+            // 
+            panel9.Controls.Add(cartesianChart1);
+            panel9.Location = new Point(309, 356);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(827, 485);
+            panel9.TabIndex = 9;
+            panel9.Visible = false;
+            // 
+            // cartesianChart1
+            // 
+            cartesianChart1.AutoUpdateEnabled = true;
+            cartesianChart1.ChartTheme = null;
+            skDefaultLegend2.AnimationsSpeed = TimeSpan.Parse("00:00:00.1500000");
+            skDefaultLegend2.Content = null;
+            skDefaultLegend2.IsValid = false;
+            skDefaultLegend2.Opacity = 1F;
+            padding3.Bottom = 0F;
+            padding3.Left = 0F;
+            padding3.Right = 0F;
+            padding3.Top = 0F;
+            skDefaultLegend2.Padding = padding3;
+            skDefaultLegend2.RemoveOnCompleted = false;
+            skDefaultLegend2.RotateTransform = 0F;
+            skDefaultLegend2.X = 0F;
+            skDefaultLegend2.Y = 0F;
+            cartesianChart1.Legend = skDefaultLegend2;
+            cartesianChart1.Location = new Point(0, 0);
+            cartesianChart1.MatchAxesScreenDataRatio = false;
+            cartesianChart1.Name = "cartesianChart1";
+            cartesianChart1.Size = new Size(549, 282);
+            cartesianChart1.TabIndex = 0;
+            skDefaultTooltip2.AnimationsSpeed = TimeSpan.Parse("00:00:00.1500000");
+            skDefaultTooltip2.Content = null;
+            skDefaultTooltip2.IsValid = false;
+            skDefaultTooltip2.Opacity = 1F;
+            padding4.Bottom = 0F;
+            padding4.Left = 0F;
+            padding4.Right = 0F;
+            padding4.Top = 0F;
+            skDefaultTooltip2.Padding = padding4;
+            skDefaultTooltip2.RemoveOnCompleted = false;
+            skDefaultTooltip2.RotateTransform = 0F;
+            skDefaultTooltip2.Wedge = 10;
+            skDefaultTooltip2.X = 0F;
+            skDefaultTooltip2.Y = 0F;
+            cartesianChart1.Tooltip = skDefaultTooltip2;
+            cartesianChart1.TooltipFindingStrategy = LiveChartsCore.Measure.TooltipFindingStrategy.Automatic;
+            cartesianChart1.UpdaterThrottler = TimeSpan.Parse("00:00:00.0500000");
             // 
             // panel3
             // 
@@ -773,6 +772,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gainsboro;
+            Controls.Add(panel9);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(panel3);

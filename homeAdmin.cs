@@ -60,7 +60,7 @@ namespace PantawidPasada
 
         private void loadDataDriver()
         {
-            string connStr = "server=localhost;user=root;password=karlbensi12345;database=pantawid_pasada;";
+            string connStr = dataBaseDetails.connStr;
 
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
@@ -89,24 +89,24 @@ namespace PantawidPasada
 
         private void loadDataAdmins()
         {
-            string connStr = "server=localhost;user=root;password=karlbensi12345;database=pantawid_pasada;";
+            string connStr = dataBaseDetails.connStr;
 
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
                 conn.Open();
 
                 string query = @"
-            SELECT 
-                COUNT(*) AS TotalAdmin
-                
-            FROM admins";
+SELECT 
+    COUNT(*) AS TotalAdmins
+FROM admins
+WHERE adminStatus = 'Active'";
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 if (reader.Read())
                 {
-                    int totalAdmin = Convert.ToInt32(reader["TotalAdmin"]);
+                    int totalAdmin = Convert.ToInt32(reader["TotalAdmins"]);
                     
 
                     // 👉 Assign to labels (CHANGE these to your actual labels)
@@ -118,17 +118,17 @@ namespace PantawidPasada
 
         private void loadDataGov()
         {
-            string connStr = "server=localhost;user=root;password=karlbensi12345;database=pantawid_pasada;";
+            string connStr = dataBaseDetails.connStr;
 
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
                 conn.Open();
 
                 string query = @"
-            SELECT 
-                COUNT(*) AS TotalGov
-                
-            FROM govAccs";
+SELECT 
+    COUNT(*) AS TotalGov
+FROM govAccs
+WHERE govStatus = 'Active'";
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 MySqlDataReader reader = cmd.ExecuteReader();

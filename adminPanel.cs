@@ -66,7 +66,7 @@ namespace PantawidPasada
         private void manageAccAdmin_Click(object sender, EventArgs e)
         {
             SetActiveButton(manageAccAdmin);
-            manageAccAdmin manageAcc = new manageAccAdmin();
+            manageAccAdmin manageAcc = new manageAccAdmin(accAdmin);
             panel2.Controls.Clear();
             panel2.Controls.Add(manageAcc);
         }

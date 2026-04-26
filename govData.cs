@@ -14,6 +14,7 @@ namespace PantawidPasada
         public string govStats { get; set; }
         public string contactNum { get; set; }
         public string email { get; set; }
+        public string createDay { get; set; }
 
     }
 }

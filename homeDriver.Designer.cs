@@ -83,6 +83,7 @@
             label41 = new Label();
             label35 = new Label();
             label34 = new Label();
+            button1 = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -682,11 +683,25 @@
             label34.TabIndex = 14;
             label34.Text = "PASSENGER TYPE";
             // 
+            // button1
+            // 
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.Location = new Point(361, 237);
+            button1.Name = "button1";
+            button1.Size = new Size(235, 49);
+            button1.TabIndex = 25;
+            button1.Text = "Request Subsidy";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // homeDriver
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gainsboro;
+            Controls.Add(button1);
             Controls.Add(panel10);
             Controls.Add(panel9);
             Controls.Add(label28);
@@ -784,5 +799,6 @@
         private Label label43;
         private Label label42;
         private Label label44;
+        private Button button1;
     }
 }
