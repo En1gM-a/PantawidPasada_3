@@ -1,6 +1,6 @@
 ﻿namespace PantawidPasada
 {
-    partial class homePetroncs
+    partial class homeFuelEditor
     {
         /// <summary>
         /// Required designer variable.
@@ -65,6 +65,7 @@
             // 
             // pictureBox3
             // 
+            pictureBox3.Image = Properties.Resources.Untitled_design__2_;
             pictureBox3.Location = new Point(12, 367);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(296, 245);
@@ -187,14 +188,14 @@
             panel2.Size = new Size(1371, 1042);
             panel2.TabIndex = 2;
             // 
-            // homePetroncs
+            // homeFuelEditor
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1904, 1041);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            Name = "homePetroncs";
+            Name = "homeFuelEditor";
             Text = "homePetroncs";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

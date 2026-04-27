@@ -131,6 +131,7 @@
             accButtonGov.TabIndex = 7;
             accButtonGov.Text = "Account";
             accButtonGov.UseVisualStyleBackColor = true;
+            accButtonGov.Click += accButtonGov_Click;
             accButtonGov.MouseLeave += accButtonGov_MouseLeave;
             accButtonGov.MouseHover += accButtonGov_MouseHover;
             // 

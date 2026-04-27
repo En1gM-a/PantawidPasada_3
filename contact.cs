@@ -63,9 +63,33 @@ namespace PantawidPasada
             data.Email = email.Text;
             data.Password = passWord.Text;
         }
+
+        public bool ISfilled()
+        {
+            if (string.IsNullOrWhiteSpace(phoneNum.Text) || string.IsNullOrWhiteSpace(email.Text) || string.IsNullOrWhiteSpace(passWord.Text) || string.IsNullOrWhiteSpace(confirmPass.Text))
+                return false;
+            else
+            {
+                return true;
+            }
+        }
         private void contact_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void confirmPass_TextChanged(object sender, EventArgs e)
+        {
+            label6.Text = "*The password does not match!";
+
+            if(confirmPass.Text != passWord.Text)
+            {
+                label6.Visible = true;
+            }
+            else
+            {
+                label6.Visible = false;
+            }
         }
     }
 }

@@ -118,43 +118,52 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Landbank.svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Landbank.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="caltex-vector-logo-free-11574207414a9lcqynsjn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\caltex-vector-logo-free-11574207414a9lcqynsjn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="petronLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\petronLogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Untitled (261 x 112 px)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Untitled (261 x 112 px)1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="caltexLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\caltexLogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Untitled (261 x 112 px) (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Untitled (261 x 112 px) (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="eye_closed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\eye_closed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Department_of_Transportation_(DOTr)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Department_of_Transportation_(DOTr).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="shellLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\shellLogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Land_Transportation_Office1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Land_Transportation_Office.svg1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Land_Transportation_Office.svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Land_Transportation_Office.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="eye_opened" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\eye_opened.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="seaOil" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\seaOil.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="eye_opened" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eye_opened.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Land_Transportation_Office.svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Land_Transportation_Office.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Land_Transportation_Office1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Land_Transportation_Office.svg1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Untitled (261 x 112 px)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Untitled (261 x 112 px)1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shellLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\shellLogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Landbank.svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Landbank.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="eye_closed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eye_closed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="LTFRB_Seal.svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LTFRB_Seal.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="caltexLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\caltexLogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Department_of_Transportation_(DOTr)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Department_of_Transportation_(DOTr).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Untitled design (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Untitled design (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Untitled design (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Untitled design (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

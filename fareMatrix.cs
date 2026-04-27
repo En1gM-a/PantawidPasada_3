@@ -84,6 +84,7 @@ namespace PantawidPasada
         private void setUpFareMatrix()
         {
             panel1.BackColor = Color.FromArgb(255, 210, 90);
+            panel15.BackColor = Color.FromArgb(255, 210, 90);
             label1.ForeColor = Color.FromArgb(30, 58, 95);
             panel9.BackColor = Color.FromArgb(30, 58, 95);
             panel5.BackColor = Color.FromArgb(30, 58, 95);
@@ -100,9 +101,34 @@ namespace PantawidPasada
             label34.ForeColor = Color.FromArgb(255, 210, 90);
             label35.ForeColor = Color.FromArgb(255, 210, 90);
             label16.ForeColor = Color.FromArgb(255, 210, 90);
-            
+
+            label36.BackColor = Color.LightBlue;
+            label37.BackColor = Color.LightGreen;
+            label6.BackColor = Color.LightBlue;
+            label12.BackColor = Color.LightGreen;
+            label18.BackColor = Color.LightBlue;
+            label25.BackColor = Color.LightGreen;
+
+
+            label36.ForeColor = Color.DarkBlue;
+            label37.ForeColor = Color.DarkGreen;
+            label6.ForeColor = Color.DarkBlue;
+            label12.ForeColor = Color.DarkGreen;
+            label18.ForeColor = Color.DarkBlue;
+            label25.ForeColor = Color.DarkGreen;
+
             panel6.BackColor = Color.FromArgb(255, 210, 90);
  
+        }
+
+        private void StyleLabel(Label lbl, int radius = 20)
+        {
+            // background color
+
+            lbl.TextAlign = ContentAlignment.MiddleCenter; // optional, center text
+            lbl.Region = Region.FromHrgn(
+                CreateRoundRectRgn(0, 0, lbl.Width, lbl.Height, radius, radius)
+            );
         }
 
         private void fareMatrix_Load(object sender, EventArgs e)
@@ -112,6 +138,12 @@ namespace PantawidPasada
             StylePanel(panel6, 20);
             StylePanel(panel2, 20);
             StylePanel(panel15, 20);
+            StyleLabel(label36, 20);
+            StyleLabel(label37, 20);
+            StyleLabel(label6, 20);
+            StyleLabel(label12, 20);
+            StyleLabel(label18, 20);
+            StyleLabel(label25, 20);
         }
     }
 }

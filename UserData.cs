@@ -31,5 +31,7 @@ namespace PantawidPasada
         public string VehicleType { get; set; }
         public string subsidyStatus { get; set; }
         public string createDay { get; set; }
+
+        public string? reason { get; set; }
     }
 }

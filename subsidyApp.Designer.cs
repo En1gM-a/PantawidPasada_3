@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(subsidyApp));
             panel1 = new Panel();
             label2 = new Label();
             panel6 = new Panel();
+            label36 = new Label();
+            label35 = new Label();
             label22 = new Label();
             dataGridView1 = new DataGridView();
             panel2 = new Panel();
@@ -70,6 +73,7 @@
             label3 = new Label();
             label33 = new Label();
             label34 = new Label();
+            searchDriver = new TextBox();
             panel1.SuspendLayout();
             panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -98,11 +102,37 @@
             // panel6
             // 
             panel6.BackColor = Color.Khaki;
+            panel6.Controls.Add(label36);
+            panel6.Controls.Add(label35);
             panel6.Controls.Add(label22);
-            panel6.Location = new Point(31, 144);
+            panel6.Location = new Point(31, 134);
             panel6.Name = "panel6";
-            panel6.Size = new Size(783, 79);
+            panel6.Size = new Size(945, 178);
             panel6.TabIndex = 13;
+            // 
+            // label36
+            // 
+            label36.AutoSize = true;
+            label36.BackColor = Color.Khaki;
+            label36.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label36.ForeColor = Color.DimGray;
+            label36.Location = new Point(167, 12);
+            label36.Name = "label36";
+            label36.Size = new Size(695, 153);
+            label36.TabIndex = 3;
+            label36.Text = resources.GetString("label36.Text");
+            // 
+            // label35
+            // 
+            label35.AutoSize = true;
+            label35.BackColor = Color.Khaki;
+            label35.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label35.ForeColor = Color.DimGray;
+            label35.Location = new Point(26, 12);
+            label35.Name = "label35";
+            label35.Size = new Size(100, 153);
+            label35.TabIndex = 2;
+            label35.Text = "Approved: \r\n\r\nRejected: \r\n\r\nOn Hold: \r\n\r\nUnder Review: \r\n\r\nReceived: ";
             // 
             // label22
             // 
@@ -117,7 +147,7 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(31, 271);
+            dataGridView1.Location = new Point(31, 348);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(478, 658);
             dataGridView1.TabIndex = 14;
@@ -160,7 +190,7 @@
             panel2.Controls.Add(label4);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(label3);
-            panel2.Location = new Point(542, 271);
+            panel2.Location = new Point(542, 348);
             panel2.Name = "panel2";
             panel2.Size = new Size(757, 658);
             panel2.TabIndex = 15;
@@ -544,7 +574,7 @@
             // 
             label33.AutoSize = true;
             label33.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label33.Location = new Point(31, 234);
+            label33.Location = new Point(29, 315);
             label33.Name = "label33";
             label33.Size = new Size(126, 30);
             label33.TabIndex = 23;
@@ -554,17 +584,28 @@
             // 
             label34.AutoSize = true;
             label34.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label34.Location = new Point(542, 234);
+            label34.Location = new Point(542, 315);
             label34.Name = "label34";
             label34.Size = new Size(239, 30);
             label34.TabIndex = 24;
             label34.Text = "Driver Full Information";
+            // 
+            // searchDriver
+            // 
+            searchDriver.Location = new Point(174, 322);
+            searchDriver.Name = "searchDriver";
+            searchDriver.Size = new Size(335, 23);
+            searchDriver.TabIndex = 25;
+            searchDriver.TextChanged += searchDriver_TextChanged;
+            searchDriver.MouseEnter += searchDriver_MouseEnter;
+            searchDriver.MouseLeave += searchDriver_MouseLeave;
             // 
             // subsidyApp
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gainsboro;
+            Controls.Add(searchDriver);
             Controls.Add(label34);
             Controls.Add(label33);
             Controls.Add(panel2);
@@ -629,5 +670,8 @@
         private Button approve;
         private Label label33;
         private Label label34;
+        private Label label35;
+        private Label label36;
+        private TextBox searchDriver;
     }
 }

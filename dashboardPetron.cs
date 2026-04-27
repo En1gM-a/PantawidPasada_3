@@ -48,22 +48,22 @@ namespace PantawidPasada
         {
             if (user?.username?.Contains("petron") == true)
             {
-                label2.Text = "Petron";
+                label8.Text = "Petron";
                 pictureBox3.Image = Properties.Resources.petronLogo;
             }
             else if (user.username.Contains("shell"))
             {
-                label2.Text = "Shell";
+                label8.Text = "Shell";
                 pictureBox3.Image = Properties.Resources.shellLogo;
             }
             else if (user.username.Contains("caltex"))
             {
-                label2.Text = "Caltex";
-                pictureBox3.Image = Properties.Resources.petronLogo;
+                label8.Text = "Caltex";
+                pictureBox3.Image = Properties.Resources.caltexLogo;
             }
             else if (user.username.Contains("seaoil"))
             {
-                label2.Text = "Total";
+                label8.Text = "SeaOil";
                 pictureBox3.Image = Properties.Resources.seaOil;
             }
             else

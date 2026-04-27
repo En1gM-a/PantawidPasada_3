@@ -81,6 +81,15 @@ namespace PantawidPasada
             panel2.Controls.Add(manageSub);
         }
 
+        private void accButtonGov_Click(object sender, EventArgs e)
+        {
+            SetActiveButton(accButtonGov);
+
+            govAccountShow account = new govAccountShow(dataGov);
+            panel2.Controls.Clear();
+            panel2.Controls.Add(account);
+        }
+
         private void homeButtonGov_MouseHover(object sender, EventArgs e)
         {
             if (activeButton != homeButtonGov)
@@ -140,5 +149,7 @@ namespace PantawidPasada
             if (activeButton != manageSubButton)
                 manageSubButton.BackColor = Color.FromArgb(30, 58, 95); // reset to default
         }
+
+        
     }
 }

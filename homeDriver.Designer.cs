@@ -34,6 +34,7 @@
             label2 = new Label();
             label1 = new Label();
             panel2 = new Panel();
+            label47 = new Label();
             label8 = new Label();
             label7 = new Label();
             label6 = new Label();
@@ -84,6 +85,9 @@
             label35 = new Label();
             label34 = new Label();
             button1 = new Button();
+            panel12 = new Panel();
+            label46 = new Label();
+            label45 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -95,6 +99,7 @@
             panel8.SuspendLayout();
             panel10.SuspendLayout();
             panel9.SuspendLayout();
+            panel12.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -155,6 +160,7 @@
             // panel2
             // 
             panel2.BackColor = Color.White;
+            panel2.Controls.Add(label47);
             panel2.Controls.Add(label8);
             panel2.Controls.Add(label7);
             panel2.Controls.Add(label6);
@@ -165,6 +171,18 @@
             panel2.Size = new Size(545, 248);
             panel2.TabIndex = 1;
             // 
+            // label47
+            // 
+            label47.AutoSize = true;
+            label47.BackColor = Color.Transparent;
+            label47.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label47.ForeColor = Color.DimGray;
+            label47.Location = new Point(32, 224);
+            label47.Name = "label47";
+            label47.Size = new Size(97, 15);
+            label47.TabIndex = 27;
+            label47.Text = "Subsidy: ₱ 5,000";
+            // 
             // label8
             // 
             label8.AutoSize = true;
@@ -174,6 +192,7 @@
             label8.Size = new Size(128, 50);
             label8.TabIndex = 4;
             label8.Text = "label8";
+            label8.MouseClick += label8_MouseClick_1;
             // 
             // label7
             // 
@@ -189,7 +208,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(32, 197);
+            label6.Location = new Point(32, 183);
             label6.Name = "label6";
             label6.Size = new Size(193, 32);
             label6.TabIndex = 2;
@@ -696,11 +715,43 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // panel12
+            // 
+            panel12.BackColor = Color.WhiteSmoke;
+            panel12.Controls.Add(label46);
+            panel12.Controls.Add(label45);
+            panel12.Location = new Point(400, 555);
+            panel12.Name = "panel12";
+            panel12.Size = new Size(465, 102);
+            panel12.TabIndex = 26;
+            panel12.Visible = false;
+            // 
+            // label46
+            // 
+            label46.AutoSize = true;
+            label46.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label46.Location = new Point(18, 14);
+            label46.Name = "label46";
+            label46.Size = new Size(62, 20);
+            label46.TabIndex = 1;
+            label46.Text = "Reason:";
+            // 
+            // label45
+            // 
+            label45.AutoSize = true;
+            label45.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label45.Location = new Point(18, 54);
+            label45.Name = "label45";
+            label45.Size = new Size(59, 20);
+            label45.TabIndex = 0;
+            label45.Text = "label45";
+            // 
             // homeDriver
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gainsboro;
+            Controls.Add(panel12);
             Controls.Add(button1);
             Controls.Add(panel10);
             Controls.Add(panel9);
@@ -738,6 +789,8 @@
             panel10.PerformLayout();
             panel9.ResumeLayout(false);
             panel9.PerformLayout();
+            panel12.ResumeLayout(false);
+            panel12.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -800,5 +853,9 @@
         private Label label42;
         private Label label44;
         private Button button1;
+        private Panel panel12;
+        private Label label45;
+        private Label label46;
+        private Label label47;
     }
 }

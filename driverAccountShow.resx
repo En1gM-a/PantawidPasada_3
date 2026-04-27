@@ -117,4 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label32.Text" xml:space="preserve">
+    <value>
+
+To protect user accounts and prevent unauthorized access or identity misuse, all account information is managed exclusively by system administrators.
+ Users are not permitted to modify sensitive account details such as passwords or personal information.</value>
+  </data>
 </root>

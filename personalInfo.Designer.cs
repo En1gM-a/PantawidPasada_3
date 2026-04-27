@@ -36,6 +36,7 @@
             middleName = new TextBox();
             lastName = new TextBox();
             firstName = new TextBox();
+            label6 = new Label();
             SuspendLayout();
             // 
             // label4
@@ -113,10 +114,22 @@
             firstName.Size = new Size(402, 35);
             firstName.TabIndex = 11;
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.DimGray;
+            label6.Location = new Point(354, 161);
+            label6.Name = "label6";
+            label6.Size = new Size(58, 15);
+            label6.TabIndex = 19;
+            label6.Text = "*Optional";
+            // 
             // personalInfo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(label6);
             Controls.Add(province);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -142,5 +155,6 @@
         private TextBox middleName;
         private TextBox lastName;
         private TextBox firstName;
+        private Label label6;
     }
 }

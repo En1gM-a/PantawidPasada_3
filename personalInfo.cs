@@ -74,6 +74,16 @@ namespace PantawidPasada
             data.username = usernameBase.ToLower();
         }
 
+        public bool ISFilledUp()
+        {
+            if(string.IsNullOrWhiteSpace(firstName.Text) || string.IsNullOrWhiteSpace(lastName.Text)  || string.IsNullOrWhiteSpace(address.Text) || string.IsNullOrWhiteSpace(province.Text)) 
+                return false;
+            else
+            {
+                return true;
+            }
+        }
+
         private void personalInfo_Load(object sender, EventArgs e)
         {
         }

@@ -10,13 +10,18 @@ namespace PantawidPasada
         UserData userData = new UserData();
         adminAcc adminData = new adminAcc();
         govData dataGov = new govData();
+        HashPassword hash = new HashPassword();
         public string LoginError { get; private set; } = "";
+
+
         // Returns true if login successful, false otherwise
 
         protected bool CheckLoginUser(string? username, string? password, UserData data)
         {
             try
             {
+                string hashedPassword = hash.HashPass(password);
+
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
                     conn.Open();
@@ -25,7 +30,7 @@ namespace PantawidPasada
 
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@username", username);
-                    cmd.Parameters.AddWithValue("@password", password);
+                    cmd.Parameters.AddWithValue("@password", hashedPassword);
 
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -52,6 +57,7 @@ namespace PantawidPasada
                             data.VehicleType = reader["vehicle_type"].ToString();
                             data.subsidyStatus = reader["subsidy_stats"].ToString();
                             data.createDay = reader["created_at"].ToString();
+                            data.reason = reader["reason"].ToString();
 
                             return true;
                         }
@@ -73,6 +79,8 @@ namespace PantawidPasada
         {
             try
             {
+                string hashedPassword = hash.HashPass(password);
+
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
                     conn.Open();
@@ -81,7 +89,7 @@ namespace PantawidPasada
 
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@username", username);
-                    cmd.Parameters.AddWithValue("@password", password);
+                    cmd.Parameters.AddWithValue("@password", hashedPassword);
 
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -95,7 +103,11 @@ namespace PantawidPasada
                             data.MiddleInit = reader["MiddleInitial"].ToString();
                             data.role = reader["RoleAdmin"].ToString();
                             data.username = reader["UsernameAdmin"].ToString();
-                            
+                            data.email = reader["email"].ToString();
+                            data.phoneNum = reader["contactNum"].ToString();
+                            data.createDay = reader["CreatedAt"].ToString();
+                            data.status = reader["adminStatus"].ToString();
+
 
                             if (reader["adminStatus"].ToString() == "Deactivated")
                             {
@@ -126,6 +138,8 @@ namespace PantawidPasada
         {
             try
             {
+                string hashedPassword = hash.HashPass(password);
+
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
                     conn.Open();
@@ -134,7 +148,7 @@ namespace PantawidPasada
 
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@username", username);
-                    cmd.Parameters.AddWithValue("@password", password);
+                    cmd.Parameters.AddWithValue("@password", hashedPassword);
 
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -151,6 +165,7 @@ namespace PantawidPasada
                             data.govStats = reader["govStatus"].ToString();
                             data.contactNum = reader["contactNum"].ToString();
                             data.email = reader["email"].ToString();
+                            data.createDay = reader["CreatedAt"].ToString();
 
                             if (reader["govStatus"].ToString() == "Deactivated")
                             {
@@ -178,6 +193,8 @@ namespace PantawidPasada
         {
             try
             {
+
+                string hashedPassword = hash.HashPass(password);
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
                     conn.Open();
@@ -190,7 +207,7 @@ namespace PantawidPasada
 
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@username", username);
-                    cmd.Parameters.AddWithValue("@password", password);
+                    cmd.Parameters.AddWithValue("@password", hashedPassword);
 
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {

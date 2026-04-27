@@ -9,10 +9,10 @@ using System.Windows.Forms;
 
 namespace PantawidPasada
 {
-    public partial class adminAccountShow : UserControl
+    public partial class govAccountShow : UserControl
     {
 
-        private adminAcc account;
+        private govData account;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn(
@@ -20,16 +20,16 @@ namespace PantawidPasada
            int nRightRect, int nBottomRect,
            int nWidthEllipse, int nHeightEllipse
        );
-        public adminAccountShow()
+        public govAccountShow()
         {
             InitializeComponent();
         }
 
-        public adminAccountShow(adminAcc acc)
+        public govAccountShow(govData acc)
         {
             InitializeComponent();
             account = acc;
-            setUpAdminAcc();
+            setUpGovAcc();
         }
 
         private void StylePanel(Panel pnl, int radius = 20)
@@ -40,19 +40,19 @@ namespace PantawidPasada
             );
         }
 
-        private void setUpAdminAcc()
+        private void setUpGovAcc()
         {
             panel1.BackColor = Color.FromArgb(255, 210, 90);
             label22.Text = account.username;
-            label23.Text = $"{account.FirstName} {account.MiddleInit} {account.LastName}";
-            label27.Text = account.phoneNum;
+            label23.Text = $"{account.firstName} {account.middleInit} {account.lastName}";
+            label27.Text = account.contactNum;
             label28.Text = account.email;
-            label30.Text = account.createDay;
-            label39.Text = account.role;
-            label38.Text = account.status;
+            label30.Text = account.agency;
+            label39.Text = account.govStats;
+            label38.Text = account.createDay;
         }
 
-        private void adminAccountShow_Load(object sender, EventArgs e)
+        private void govAccountShow_Load(object sender, EventArgs e)
         {
             StylePanel(panel2, 20);
             StylePanel(panel3, 20);

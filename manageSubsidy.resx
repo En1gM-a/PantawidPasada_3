@@ -117,4 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label4.Text" xml:space="preserve">
+    <value>This section is used for managing the release and confirmation of subsidies for approved beneficiaries. 
+It serves as the final stage of processing, where only verified applications are handled for disbursement. 
+All status updates must strictly reflect actual transactions, whether the subsidy has been released or successfully received.
+ Users are required to ensure that all records are accurate, complete, and properly validated before making any changes. 
+This module maintains the integrity and accountability of all subsidy-related transactions.</value>
+  </data>
 </root>

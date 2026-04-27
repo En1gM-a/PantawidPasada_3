@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(manageSubsidy));
             panel1 = new Panel();
             label2 = new Label();
             panel6 = new Panel();
+            label4 = new Label();
             label22 = new Label();
             dataGridView1 = new DataGridView();
             panel2 = new Panel();
@@ -44,6 +46,7 @@
             label12 = new Label();
             label13 = new Label();
             label14 = new Label();
+            searchDriver = new TextBox();
             panel1.SuspendLayout();
             panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -73,11 +76,24 @@
             // panel6
             // 
             panel6.BackColor = Color.Khaki;
+            panel6.Controls.Add(label4);
             panel6.Controls.Add(label22);
-            panel6.Location = new Point(38, 227);
+            panel6.Location = new Point(38, 198);
             panel6.Name = "panel6";
-            panel6.Size = new Size(1052, 90);
+            panel6.Size = new Size(933, 143);
             panel6.TabIndex = 13;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = Color.Khaki;
+            label4.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.DimGray;
+            label4.Location = new Point(34, 20);
+            label4.Name = "label4";
+            label4.Size = new Size(837, 100);
+            label4.TabIndex = 1;
+            label4.Text = resources.GetString("label4.Text");
             // 
             // label22
             // 
@@ -85,14 +101,14 @@
             label22.BackColor = Color.Gold;
             label22.Location = new Point(-2, 0);
             label22.Name = "label22";
-            label22.Size = new Size(7, 120);
+            label22.Size = new Size(7, 165);
             label22.TabIndex = 0;
-            label22.Text = "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n";
+            label22.Text = "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n";
             // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(38, 350);
+            dataGridView1.Location = new Point(38, 387);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(584, 612);
             dataGridView1.TabIndex = 14;
@@ -103,7 +119,7 @@
             panel2.BackColor = Color.WhiteSmoke;
             panel2.Controls.Add(label3);
             panel2.Controls.Add(label1);
-            panel2.Location = new Point(678, 350);
+            panel2.Location = new Point(678, 387);
             panel2.Name = "panel2";
             panel2.Size = new Size(412, 170);
             panel2.TabIndex = 15;
@@ -138,13 +154,14 @@
             panel3.Controls.Add(label12);
             panel3.Controls.Add(label13);
             panel3.Controls.Add(label14);
-            panel3.Location = new Point(678, 557);
+            panel3.Location = new Point(678, 594);
             panel3.Name = "panel3";
             panel3.Size = new Size(412, 405);
             panel3.TabIndex = 16;
             // 
             // giveSub
             // 
+            giveSub.FlatAppearance.BorderSize = 0;
             giveSub.FlatStyle = FlatStyle.Flat;
             giveSub.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             giveSub.Location = new Point(38, 336);
@@ -153,6 +170,7 @@
             giveSub.TabIndex = 7;
             giveSub.Text = "Subsidy Given";
             giveSub.UseVisualStyleBackColor = true;
+            giveSub.Click += giveSub_Click;
             // 
             // label9
             // 
@@ -220,11 +238,22 @@
             label14.TabIndex = 1;
             label14.Text = "FULL NAME";
             // 
+            // searchDriver
+            // 
+            searchDriver.Location = new Point(38, 358);
+            searchDriver.Name = "searchDriver";
+            searchDriver.Size = new Size(584, 23);
+            searchDriver.TabIndex = 17;
+            searchDriver.TextChanged += searchDriver_TextChanged;
+            searchDriver.MouseEnter += searchDriver_MouseEnter;
+            searchDriver.MouseLeave += searchDriver_MouseLeave;
+            // 
             // manageSubsidy
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gainsboro;
+            Controls.Add(searchDriver);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(dataGridView1);
@@ -245,6 +274,7 @@
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -265,5 +295,7 @@
         private Label label14;
         private Label label3;
         private Button giveSub;
+        private Label label4;
+        private TextBox searchDriver;
     }
 }

@@ -63,6 +63,16 @@ namespace PantawidPasada.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap caltex_vector_logo_free_11574207414a9lcqynsjn {
+            get {
+                object obj = ResourceManager.GetObject("caltex-vector-logo-free-11574207414a9lcqynsjn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap caltexLogo {
             get {
                 object obj = ResourceManager.GetObject("caltexLogo", resourceCulture);
@@ -186,6 +196,26 @@ namespace PantawidPasada.Properties {
         internal static System.Drawing.Bitmap Untitled__261_x_112_px___1_ {
             get {
                 object obj = ResourceManager.GetObject("Untitled (261 x 112 px) (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Untitled_design__1_ {
+            get {
+                object obj = ResourceManager.GetObject("Untitled design (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Untitled_design__2_ {
+            get {
+                object obj = ResourceManager.GetObject("Untitled design (2)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

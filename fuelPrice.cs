@@ -139,7 +139,8 @@ namespace PantawidPasada
                 }
 
                 // Show the date of the most recent entry
-                label3.Text = "Fuel Prices as of " + list[0].DateOfPrice.ToString("MMMM dd, yyyy");
+                var latestDate = list.Max(x => x.DateOfPrice);
+                label3.Text = "Fuel Prices as of " + latestDate.ToString("MMMM dd, yyyy");
 
                 foreach (var item in list)
                 {

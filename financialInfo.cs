@@ -29,7 +29,7 @@ namespace PantawidPasada
         {
             InitializeComponent();
             setUpFinancialInfo();
-            
+            this.BackColor = Color.FromArgb(30, 58, 95);
             userData = data;
         }
 
@@ -101,6 +101,24 @@ namespace PantawidPasada
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            if(string.IsNullOrWhiteSpace(income.Text) || string.IsNullOrWhiteSpace(employmentType.Text) )
+            {
+                MessageBox.Show("Please fill up all required fields.", "Incomplete Information",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if(string.IsNullOrWhiteSpace(sourceOfIncome.Text))
+            {
+                sourceOfIncome.Text = "N/A";
+            }
+
+            if (string.IsNullOrWhiteSpace(financialObligation.Text))
+            {
+                financialObligation.Text = "N/A";
+            }
+
             financialInfoControl.FillData(userData);
 
             try

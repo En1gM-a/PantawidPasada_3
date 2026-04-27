@@ -28,25 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(adminAccountShow));
             panel3 = new Panel();
+            label30 = new Label();
             label38 = new Label();
             label39 = new Label();
             label47 = new Label();
             label48 = new Label();
             label50 = new Label();
+            label21 = new Label();
             label57 = new Label();
-            label30 = new Label();
+            label12 = new Label();
             label28 = new Label();
             label27 = new Label();
             label23 = new Label();
             label22 = new Label();
-            label21 = new Label();
             label19 = new Label();
             label18 = new Label();
             label59 = new Label();
             label14 = new Label();
             label13 = new Label();
-            label12 = new Label();
             label11 = new Label();
             label9 = new Label();
             label2 = new Label();
@@ -57,24 +58,43 @@
             label5 = new Label();
             label1 = new Label();
             panel1 = new Panel();
+            panel4 = new Panel();
+            label3 = new Label();
+            label7 = new Label();
+            label4 = new Label();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
+            panel4.SuspendLayout();
             SuspendLayout();
             // 
             // panel3
             // 
             panel3.BackColor = Color.WhiteSmoke;
+            panel3.Controls.Add(label30);
             panel3.Controls.Add(label38);
             panel3.Controls.Add(label39);
             panel3.Controls.Add(label47);
             panel3.Controls.Add(label48);
             panel3.Controls.Add(label50);
+            panel3.Controls.Add(label21);
             panel3.Controls.Add(label57);
-            panel3.Location = new Point(734, 276);
+            panel3.Controls.Add(label12);
+            panel3.Location = new Point(711, 455);
             panel3.Name = "panel3";
-            panel3.Size = new Size(528, 192);
+            panel3.Size = new Size(528, 249);
             panel3.TabIndex = 36;
+            // 
+            // label30
+            // 
+            label30.AutoSize = true;
+            label30.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label30.ForeColor = Color.Black;
+            label30.Location = new Point(304, 171);
+            label30.Name = "label30";
+            label30.Size = new Size(83, 21);
+            label30.TabIndex = 26;
+            label30.Text = "Username";
             // 
             // label38
             // 
@@ -131,6 +151,17 @@
             label50.TabIndex = 7;
             label50.Text = "Role";
             // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label21.ForeColor = Color.DimGray;
+            label21.Location = new Point(40, 192);
+            label21.Name = "label21";
+            label21.Size = new Size(458, 21);
+            label21.TabIndex = 17;
+            label21.Text = "________________________________________________________________";
+            // 
             // label57
             // 
             label57.AutoSize = true;
@@ -142,16 +173,16 @@
             label57.TabIndex = 0;
             label57.Text = "Status";
             // 
-            // label30
+            // label12
             // 
-            label30.AutoSize = true;
-            label30.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label30.ForeColor = Color.Black;
-            label30.Location = new Point(304, 343);
-            label30.Name = "label30";
-            label30.Size = new Size(83, 21);
-            label30.TabIndex = 26;
-            label30.Text = "Username";
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label12.ForeColor = Color.DimGray;
+            label12.Location = new Point(40, 171);
+            label12.Name = "label12";
+            label12.Size = new Size(133, 21);
+            label12.TabIndex = 8;
+            label12.Text = "Account Created";
             // 
             // label28
             // 
@@ -197,17 +228,6 @@
             label22.TabIndex = 18;
             label22.Text = "Username";
             // 
-            // label21
-            // 
-            label21.AutoSize = true;
-            label21.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label21.ForeColor = Color.DimGray;
-            label21.Location = new Point(40, 364);
-            label21.Name = "label21";
-            label21.Size = new Size(458, 21);
-            label21.TabIndex = 17;
-            label21.Text = "________________________________________________________________";
-            // 
             // label19
             // 
             label19.AutoSize = true;
@@ -234,7 +254,7 @@
             // 
             label59.AutoSize = true;
             label59.BackColor = Color.Gold;
-            label59.Location = new Point(734, 201);
+            label59.Location = new Point(711, 380);
             label59.Name = "label59";
             label59.Size = new Size(7, 60);
             label59.TabIndex = 34;
@@ -261,17 +281,6 @@
             label13.Size = new Size(458, 21);
             label13.TabIndex = 9;
             label13.Text = "________________________________________________________________";
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label12.ForeColor = Color.DimGray;
-            label12.Location = new Point(40, 343);
-            label12.Name = "label12";
-            label12.Size = new Size(133, 21);
-            label12.TabIndex = 8;
-            label12.Text = "Account Created";
             // 
             // label11
             // 
@@ -310,7 +319,7 @@
             // 
             label58.AutoSize = true;
             label58.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label58.Location = new Point(747, 224);
+            label58.Location = new Point(724, 403);
             label58.Name = "label58";
             label58.Size = new Size(284, 37);
             label58.TabIndex = 35;
@@ -319,24 +328,21 @@
             // panel2
             // 
             panel2.BackColor = Color.WhiteSmoke;
-            panel2.Controls.Add(label30);
             panel2.Controls.Add(label28);
             panel2.Controls.Add(label27);
             panel2.Controls.Add(label23);
             panel2.Controls.Add(label22);
-            panel2.Controls.Add(label21);
             panel2.Controls.Add(label19);
             panel2.Controls.Add(label18);
             panel2.Controls.Add(label14);
             panel2.Controls.Add(label13);
-            panel2.Controls.Add(label12);
             panel2.Controls.Add(label11);
             panel2.Controls.Add(label9);
             panel2.Controls.Add(label8);
             panel2.Controls.Add(label2);
-            panel2.Location = new Point(81, 276);
+            panel2.Location = new Point(79, 455);
             panel2.Name = "panel2";
-            panel2.Size = new Size(528, 421);
+            panel2.Size = new Size(528, 335);
             panel2.TabIndex = 33;
             // 
             // label8
@@ -354,7 +360,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(94, 224);
+            label6.Location = new Point(92, 403);
             label6.Name = "label6";
             label6.Size = new Size(289, 37);
             label6.TabIndex = 32;
@@ -364,7 +370,7 @@
             // 
             label5.AutoSize = true;
             label5.BackColor = Color.Gold;
-            label5.Location = new Point(81, 201);
+            label5.Location = new Point(79, 380);
             label5.Name = "label5";
             label5.Size = new Size(7, 60);
             label5.TabIndex = 31;
@@ -383,15 +389,59 @@
             // panel1
             // 
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(0, 0);
+            panel1.Location = new Point(-2, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(1374, 149);
             panel1.TabIndex = 30;
+            // 
+            // panel4
+            // 
+            panel4.BackColor = Color.Khaki;
+            panel4.Controls.Add(label4);
+            panel4.Controls.Add(label3);
+            panel4.Controls.Add(label7);
+            panel4.Location = new Point(79, 182);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(1193, 122);
+            panel4.TabIndex = 37;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.DimGray;
+            label3.Location = new Point(28, 16);
+            label3.Name = "label3";
+            label3.Size = new Size(1033, 80);
+            label3.TabIndex = 2;
+            label3.Text = resources.GetString("label3.Text");
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.BackColor = Color.Gold;
+            label7.Location = new Point(-2, 0);
+            label7.Name = "label7";
+            label7.Size = new Size(7, 120);
+            label7.TabIndex = 0;
+            label7.Text = "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.DimGray;
+            label4.Location = new Point(28, 16);
+            label4.Name = "label4";
+            label4.Size = new Size(123, 40);
+            label4.TabIndex = 3;
+            label4.Text = "Security Notice: \r\n\r\n";
             // 
             // adminAccountShow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(panel4);
             Controls.Add(panel3);
             Controls.Add(label59);
             Controls.Add(label58);
@@ -401,12 +451,15 @@
             Controls.Add(panel1);
             Name = "adminAccountShow";
             Size = new Size(1374, 1040);
+            Load += adminAccountShow_Load;
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -442,5 +495,9 @@
         private Label label5;
         private Label label1;
         private Panel panel1;
+        private Panel panel4;
+        private Label label4;
+        private Label label3;
+        private Label label7;
     }
 }

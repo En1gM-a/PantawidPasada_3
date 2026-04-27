@@ -22,6 +22,7 @@ namespace PantawidPasada
                     last_name AS 'Last Name',
                     first_name AS 'First Name',
                     IFNULL(LEFT(middle_name, 1), '') AS 'M.I',
+                    email as 'Email',
                     subsidy_stats AS 'Subsidy Status'
                 FROM driverAccs
                 WHERE subsidy_stats IN ('Pending', 'Under Review', 'On Hold')";
@@ -34,6 +35,7 @@ namespace PantawidPasada
                 if (datagrid.Columns.Contains("driver_id"))
                 {
                     datagrid.Columns["driver_id"].Visible = false;
+                    datagrid.Columns["Email"].Visible = false;
                 }
             }
         }

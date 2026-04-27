@@ -71,6 +71,7 @@
             // 
             // panel1
             // 
+            panel1.BackColor = Color.WhiteSmoke;
             panel1.Location = new Point(229, 130);
             panel1.Name = "panel1";
             panel1.Size = new Size(446, 427);
@@ -93,6 +94,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Gainsboro;
             ClientSize = new Size(886, 640);
             Controls.Add(button1);
             Controls.Add(panel1);
@@ -100,6 +102,7 @@
             Controls.Add(SignUp);
             Controls.Add(pictureBox5);
             Name = "requestSubsidy";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "requestSubsidy";
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             ResumeLayout(false);

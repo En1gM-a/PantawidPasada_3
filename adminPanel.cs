@@ -58,7 +58,7 @@ namespace PantawidPasada
         private void fuelPriceAdmin_Click(object sender, EventArgs e)
         {
             SetActiveButton(fuelPriceAdmin);
-            manageFuel fuel = new manageFuel();
+            fuelPrice fuel = new fuelPrice();
             panel2.Controls.Clear();
             panel2.Controls.Add(fuel);
         }
@@ -77,6 +77,14 @@ namespace PantawidPasada
             Form1 form1 = new Form1();
             form1.ShowDialog();
             this.Close();
+        }
+
+        private void accountAdmin_Click(object sender, EventArgs e)
+        {
+            SetActiveButton(accountAdmin);
+            adminAccountShow acc = new adminAccountShow(accAdmin);
+            panel2.Controls.Clear();
+            panel2.Controls.Add(acc);
         }
 
         private void homeButtonAdmin_MouseHover(object sender, EventArgs e)
@@ -145,7 +153,11 @@ namespace PantawidPasada
                 logoutButton.BackColor = Color.FromArgb(30, 58, 95); // reset to default
         }
 
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DatabaseSeeder seeder = new DatabaseSeeder();
+            seeder.SeedGovAccounts();
+        }
     }
 }
 

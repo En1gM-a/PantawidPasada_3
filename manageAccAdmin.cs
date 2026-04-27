@@ -14,6 +14,7 @@ namespace PantawidPasada
     {
 
         accessAdminGovAccs accessAdminGovAccs = new accessAdminGovAccs();
+        HashPassword hashPassword = new HashPassword();
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn(
@@ -41,10 +42,56 @@ namespace PantawidPasada
             if (acc.role != "Super Admin")
             {
                 MakeGridFaded(dataGridView1);
-
+                resetPass.Visible = false;
+                resetPass.Enabled = false;
+                panel5.Visible = false;
             }
 
 
+        }
+
+        private bool AccountExists(string username, string email, string contact, string table)
+        {
+            string connStr = dataBaseDetails.connStr;
+
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+
+                string query = "";
+
+                if (table == "admins")
+                {
+                    query = @"
+                SELECT COUNT(*) 
+                FROM admins
+                WHERE UsernameAdmin = @username
+                   OR email = @email
+                   OR contactNum = @contact";
+                }
+                else if (table == "govAccs")
+                {
+                    query = @"
+                SELECT COUNT(*) 
+                FROM govAccs
+                WHERE Username = @username
+                   OR email = @email
+                   OR contactNum = @contact";
+                }
+                else
+                {
+                    return false;
+                }
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@username", username);
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@contact", contact);
+
+                    return Convert.ToInt32(cmd.ExecuteScalar()) > 0;
+                }
+            }
         }
 
         private void MakeGridFaded(DataGridView grid)
@@ -117,6 +164,13 @@ namespace PantawidPasada
             updateStatus.BackColor = Color.FromArgb(244, 196, 48);
             updateStatus.Region = Region.FromHrgn(
                 CreateRoundRectRgn(0, 0, updateStatus.Width, updateStatus.Height, 20, 20));
+            resetPass.BackColor = Color.FromArgb(30, 58, 95);
+            resetPass.ForeColor = Color.FromArgb(255, 210, 90);
+            resetPass.Region = Region.FromHrgn(
+                CreateRoundRectRgn(0, 0, resetPass.Width, resetPass.Height, 20, 20));
+            confirmReset.BackColor = Color.FromArgb(244, 196, 48);
+            confirmReset.Region = Region.FromHrgn(
+                CreateRoundRectRgn(0, 0, confirmReset.Width, confirmReset.Height, 20, 20));
 
         }
 
@@ -206,7 +260,7 @@ namespace PantawidPasada
 
             setStatus();
         }
-      
+
 
         private bool _loadingFromGrid1 = false;
         private bool _loadingFromGrid2 = false;
@@ -215,28 +269,26 @@ namespace PantawidPasada
         {
             if (e.RowIndex < 0) return;
 
-            _loadingFromGrid2 = true;
-            dataGridView2.ClearSelection();
-            _loadingFromGrid2 = false;
+            if (!dataGridView1.Columns.Contains("AdminID")) return;
 
-            _selectedSource = "admin";   // ADD
+            _selectedSource = "admin";
             _selectedID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["AdminID"].Value);
+
             LoadAdminDetails(_selectedID);
-            
+
         }
 
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
 
-            _loadingFromGrid1 = true;
-            dataGridView1.ClearSelection();
-            _loadingFromGrid1 = false;
+            if (!dataGridView2.Columns.Contains("GovID")) return;
 
-            _selectedSource = "gov";     // ADD
+            _selectedSource = "gov";
             _selectedID = Convert.ToInt32(dataGridView2.Rows[e.RowIndex].Cells["GovID"].Value);
+
             LoadGovDetails(_selectedID);
-            
+
         }
 
         private void saveButton_Click(object sender, EventArgs e)
@@ -252,12 +304,11 @@ namespace PantawidPasada
             // Check required fields
             if (string.IsNullOrWhiteSpace(textBox2.Text) ||
                 string.IsNullOrWhiteSpace(textBox1.Text) ||
-
                 string.IsNullOrWhiteSpace(textBox4.Text) ||
                 string.IsNullOrWhiteSpace(textBox5.Text) ||
                 string.IsNullOrWhiteSpace(textBox6.Text))
             {
-                MessageBox.Show("Please fill in all required fields (First Name, Last Name, Username, Password, Contact Nummber, Email).",
+                MessageBox.Show("Please fill in all required fields (First Name, Last Name, Password, Contact Number, Email).",
                     "Missing Fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -274,11 +325,47 @@ namespace PantawidPasada
                 }
             }
 
-            // Save based on role
+            // =========================
+            // DUPLICATE CHECK VALUES
+            // =========================
+            string username = label8.Text.Trim();
+            string email = textBox6.Text.Trim();
+            string contact = textBox5.Text.Trim();
+
             if (radioButton1.Checked)
+            {
+                // ADMIN DUPLICATE CHECK
+                if (AccountExists(username, email, contact, "admins"))
+                {
+                    MessageBox.Show(
+                        "This admin account already exists. You cannot create another account of the same person.",
+                        "Duplicate Account",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+
+                    ClearForm(); // optional: reset form
+                    return;
+                }
+
                 SaveAdminAccount();
+            }
             else
+            {
+                // GOV DUPLICATE CHECK
+                if (AccountExists(username, email, contact, "govAccs"))
+                {
+                    MessageBox.Show(
+                        "This government account already exists. You cannot create another account of the same person.",
+                        "Duplicate Account",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+
+                    ClearForm(); // optional
+                    return;
+                }
+
                 SaveGovAccount();
+            }
         }
 
         private void SaveAdminAccount()
@@ -302,7 +389,7 @@ namespace PantawidPasada
                     cmd.Parameters.AddWithValue("@middleInit", string.IsNullOrWhiteSpace(textBox3.Text) ? "" : textBox3.Text.Trim());
                     cmd.Parameters.AddWithValue("@role", "Admin");
                     cmd.Parameters.AddWithValue("@username", label8.Text.Trim());
-                    cmd.Parameters.AddWithValue("@password", textBox4.Text);
+                    cmd.Parameters.AddWithValue("@password", hashPassword.HashPass(textBox4.Text));
 
 
                     cmd.Parameters.AddWithValue("@status", "Active");
@@ -358,7 +445,7 @@ namespace PantawidPasada
                     cmd.Parameters.AddWithValue("@middleInit", string.IsNullOrWhiteSpace(textBox3.Text) ? "" : textBox3.Text.Trim());
                     cmd.Parameters.AddWithValue("@agency", agency);
                     cmd.Parameters.AddWithValue("@username", label8.Text.Trim());
-                    cmd.Parameters.AddWithValue("@password", textBox4.Text);
+                    cmd.Parameters.AddWithValue("@password", hashPassword.HashPass(textBox4.Text));
                     cmd.Parameters.AddWithValue("@status", "Active");
                     cmd.Parameters.AddWithValue("@contact", textBox5.Text.Trim());
                     cmd.Parameters.AddWithValue("@email", textBox6.Text.Trim());
@@ -507,6 +594,279 @@ namespace PantawidPasada
             {
                 MessageBox.Show("Error updating status: " + ex.Message,
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private DataTable SearchAdmins(string keyword)
+        {
+            string connStr = dataBaseDetails.connStr;
+            DataTable dt = new DataTable();
+
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+
+                string query = @"
+            SELECT AdminID, FirstName, LastName, MiddleInitial, adminStatus
+            FROM admins
+            WHERE FirstName LIKE @search
+               OR LastName LIKE @search";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@search", "%" + keyword + "%");
+
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    da.Fill(dt);
+                }
+            }
+
+            return dt;
+        }
+
+        private DataTable SearchGovs(string keyword)
+        {
+            string connStr = dataBaseDetails.connStr;
+            DataTable dt = new DataTable();
+
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+
+                string query = @"
+            SELECT GovID, FirstName, LastName, MiddleInitial, govStatus
+            FROM govAccs
+            WHERE FirstName LIKE @search
+               OR LastName LIKE @search";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@search", "%" + keyword + "%");
+
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    da.Fill(dt);
+                }
+            }
+
+            return dt;
+        }
+
+        private void searchAdmin_TextChanged(object sender, EventArgs e)
+        {
+            string keyword = searchAdmin.Text.Trim();
+
+            if (string.IsNullOrEmpty(keyword) || keyword == "Search admin...")
+            {
+                accessAdminGovAccs.LoadAdminsToDataGrid(dataGridView1);
+                return;
+            }
+
+            dataGridView1.DataSource = SearchAdmins(keyword);
+        }
+
+        private void searchGov_TextChanged(object sender, EventArgs e)
+        {
+            string keyword = searchGov.Text.Trim();
+
+            if (string.IsNullOrEmpty(keyword) || keyword == "Search government...")
+            {
+                accessAdminGovAccs.LoadGovsToDataGrid(dataGridView2);
+                return;
+            }
+
+            dataGridView2.DataSource = SearchGovs(keyword);
+        }
+
+        private void searchGov_MouseEnter(object sender, EventArgs e)
+        {
+            if (searchGov.Text == "Search government...")
+            {
+                searchGov.Text = "";
+                searchGov.ForeColor = Color.Black;
+            }
+        }
+
+        private void searchGov_MouseLeave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(searchGov.Text))
+            {
+                searchGov.Text = "Search government...";
+                searchGov.ForeColor = Color.Gray;
+            }
+        }
+
+        private void searchAdmin_MouseEnter(object sender, EventArgs e)
+        {
+            if (searchAdmin.Text == "Search admin...")
+            {
+                searchAdmin.Text = "";
+                searchAdmin.ForeColor = Color.Black;
+            }
+        }
+
+        private void searchAdmin_MouseLeave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(searchAdmin.Text))
+            {
+                searchAdmin.Text = "Search admin...";
+                searchAdmin.ForeColor = Color.Gray;
+            }
+        }
+
+        private bool isClicked = false;
+
+        private string GetSelectedTable()
+        {
+            if (radioButton9.Checked) return "driverAccs";
+            if (radioButton10.Checked) return "govAccs";
+            if (radioButton11.Checked) return "admins";
+            if (radioButton12.Checked) return "fuelEditors"; // change if your actual table name differs
+
+            return "";
+        }
+
+        
+
+        private void resetPass_Click(object sender, EventArgs e)
+        {
+            isClicked = !isClicked; // toggle state
+            panel5.Visible = isClicked;
+        }
+
+        private void confirmReset_Click(object sender, EventArgs e)
+        {
+            string username = searchUser.Text.Trim();
+            string newPassword = newPass.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(username) || username == "Search user...")
+            {
+                MessageBox.Show("Please enter a username.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(newPassword) || newPassword == "Enter new password...")
+            {
+                MessageBox.Show("Please enter a new password.");
+                return;
+            }
+
+            string table = "";
+            string userColumn = "";
+            string passColumn = "";
+
+            // 🔥 DETERMINE ROLE
+            if (radioButton9.Checked) // DRIVER
+            {
+                table = "driverAccs";
+                userColumn = "usernameUser";
+                passColumn = "passwordUser";
+            }
+            else if (radioButton10.Checked) // GOV
+            {
+                table = "govAccs";
+                userColumn = "Username";
+                passColumn = "Password";
+            }
+            else if (radioButton11.Checked) // ADMIN
+            {
+                table = "admins";
+                userColumn = "UsernameAdmin";
+                passColumn = "PasswordAdmin";
+            }
+            else if (radioButton12.Checked) // FUEL EDITOR
+            {
+                table = "fuelEditors";
+                userColumn = "username";
+                passColumn = "password";
+            }
+            else
+            {
+                MessageBox.Show("Please select a user type.");
+                return;
+            }
+
+            string connStr = dataBaseDetails.connStr;
+
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+
+                // 🔍 CHECK IF USER EXISTS
+                string checkQuery = $"SELECT COUNT(*) FROM {table} WHERE {userColumn} = @user";
+
+                using (MySqlCommand checkCmd = new MySqlCommand(checkQuery, conn))
+                {
+                    checkCmd.Parameters.AddWithValue("@user", username);
+
+                    int count = Convert.ToInt32(checkCmd.ExecuteScalar());
+
+                    if (count == 0)
+                    {
+                        MessageBox.Show("User not found.");
+                        return;
+                    }
+                }
+
+                // 🔐 UPDATE PASSWORD
+                string updateQuery = $"UPDATE {table} SET {passColumn} = @pass WHERE {userColumn} = @user";
+
+                using (MySqlCommand cmd = new MySqlCommand(updateQuery, conn))
+                {
+                    HashPassword hash = new HashPassword();
+                    string hashedPass = hash.HashPass(newPassword);
+
+                    cmd.Parameters.AddWithValue("@pass", hashedPass);
+                    cmd.Parameters.AddWithValue("@user", username);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+            MessageBox.Show("Password reset successfully!");
+
+            // 🔄 Reset UI (optional)
+            searchUser.Text = "Search user...";
+            searchUser.ForeColor = Color.Gray;
+
+            newPass.Text = "Enter new password...";
+            newPass.ForeColor = Color.Gray;
+        }
+
+        private void searchUser_MouseEnter(object sender, EventArgs e)
+        {
+            if (searchUser.Text == "Search user...")
+            {
+                searchUser.Text = "";
+                searchUser.ForeColor = Color.Black;
+            }
+        }
+
+        private void searchUser_MouseLeave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(searchUser.Text))
+            {
+                searchUser.Text = "Search user...";
+                searchUser.ForeColor = Color.Gray;
+            }
+        }
+
+        private void newPass_MouseEnter(object sender, EventArgs e)
+        {
+            if (newPass.Text == "Enter new password...")
+            {
+                newPass.Text = "";
+                newPass.ForeColor = Color.Black;
+                newPass.UseSystemPasswordChar = true; // hide characters
+            }
+        }
+
+        private void newPass_MouseLeave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(newPass.Text))
+            {
+                newPass.UseSystemPasswordChar = false; // show placeholder
+                newPass.Text = "Enter new password...";
+                newPass.ForeColor = Color.Gray;
             }
         }
     }

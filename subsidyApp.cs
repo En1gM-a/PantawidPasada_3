@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Net.Mail;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace PantawidPasada
 {
@@ -14,6 +16,7 @@ namespace PantawidPasada
     {
 
         accessDriverInfo driverInfo = new accessDriverInfo();
+        EmailService emailService = new EmailService();
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn(
@@ -71,6 +74,7 @@ namespace PantawidPasada
         private void LoadDriverDetails(int driverId)
         {
             string connStr = dataBaseDetails.connStr;
+
 
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
@@ -144,51 +148,67 @@ namespace PantawidPasada
 
         private void approve_Click(object sender, EventArgs e)
         {
-            // Check if a row is selected in the DataGridView
             if (dataGridView1.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Please select a driver first.", "No Selection",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a driver first.");
                 return;
             }
 
-            // Get the driver ID and name from the selected row
             string driverId = dataGridView1.SelectedRows[0].Cells["driver_id"].Value.ToString();
             string driverName = dataGridView1.SelectedRows[0].Cells["First Name"].Value.ToString()
                               + " " + dataGridView1.SelectedRows[0].Cells["Last Name"].Value.ToString();
 
-            // Confirm before approving
+            string email = dataGridView1.SelectedRows[0].Cells["email"].Value.ToString();
+
             DialogResult confirm = MessageBox.Show(
-                $"Are you sure you want to approve the subsidy for:\n\n{driverName}?",
+                $"Approve subsidy for:\n\n{driverName}?",
                 "Confirm Approval",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question);
 
             if (confirm != DialogResult.Yes) return;
 
-            // Update the database
-            string connStr = dataBaseDetails.connStr;
-
-            using (MySqlConnection conn = new MySqlConnection(connStr))
+            // 🔥 ASK FOR REASON
+            using (InputReasonForm reasonForm = new InputReasonForm("Approval Reason"))
             {
-                conn.Open();
+                if (reasonForm.ShowDialog() != DialogResult.OK)
+                    return;
 
-                string query = "UPDATE driverAccs SET subsidy_stats = 'Approved' WHERE driver_id = @id";
+                string reason = reasonForm.ReasonText;
 
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@id", driverId);
-                cmd.ExecuteNonQuery();
+                if (string.IsNullOrWhiteSpace(reason))
+                {
+                    MessageBox.Show("Reason is required.");
+                    return;
+                }
+
+                // DB UPDATE
+                using (MySqlConnection conn = new MySqlConnection(dataBaseDetails.connStr))
+                {
+                    conn.Open();
+
+                    string query = @"UPDATE driverAccs 
+                             SET subsidy_stats = 'Approved', reason = @reason 
+                             WHERE driver_id = @id";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@id", driverId);
+                    cmd.Parameters.AddWithValue("@reason", reason);
+                    cmd.ExecuteNonQuery();
+                }
+
+                // EMAIL
+
+
+                emailService.SendEmail(
+                    email,
+                    "Subsidy Application Approved",
+                    $"Hello {driverName},\n\nYour subsidy has been APPROVED.\n\nReason: {reason}\n\nThank you."
+                );
+
+                MessageBox.Show("Approved successfully!");
+                driverInfo.LoadDriversToDataGrid(dataGridView1);
             }
-
-            // Success message
-            MessageBox.Show(
-                $"Subsidy for {driverName} has been approved successfully!",
-                "Approved",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
-
-            // Refresh the DataGridView to remove the approved driver from the list
-            driverInfo.LoadDriversToDataGrid(dataGridView1);
         }
 
         private void reject_Click(object sender, EventArgs e)
@@ -205,15 +225,27 @@ namespace PantawidPasada
             string driverId = dataGridView1.SelectedRows[0].Cells["driver_id"].Value.ToString();
             string driverName = dataGridView1.SelectedRows[0].Cells["First Name"].Value.ToString()
                               + " " + dataGridView1.SelectedRows[0].Cells["Last Name"].Value.ToString();
-
+            string email = dataGridView1.SelectedRows[0].Cells["email"].Value.ToString();
             // Confirm before rejecting
             DialogResult confirm = MessageBox.Show(
-                $"Are you sure you want to reject the subsidy for:\n\n{driverName}?",
-                "Confirm Approval",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
+    $"Are you sure you want to reject the subsidy for:\n\n{driverName}?",
+    "Confirm Rejection",
+    MessageBoxButtons.YesNo,
+    MessageBoxIcon.Question);
 
             if (confirm != DialogResult.Yes) return;
+
+            // 🔥 ASK FOR REASON
+            InputReasonForm reasonForm = new InputReasonForm("Reject Reason");
+            reasonForm.ShowDialog();
+
+            string reason = reasonForm.ReasonText;
+
+            if (string.IsNullOrWhiteSpace(reason))
+            {
+                MessageBox.Show("Rejection cancelled: no reason provided.");
+                return;
+            }
 
             // Update the database
             string connStr = dataBaseDetails.connStr;
@@ -222,12 +254,19 @@ namespace PantawidPasada
             {
                 conn.Open();
 
-                string query = "UPDATE driverAccs SET subsidy_stats = 'Rejected' WHERE driver_id = @id";
+                string query = "UPDATE driverAccs SET subsidy_stats = 'Rejected', reason = @reason WHERE driver_id = @id";
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@id", driverId);
+                cmd.Parameters.AddWithValue("@reason", reason);
                 cmd.ExecuteNonQuery();
             }
+
+            emailService.SendEmail(
+                    email,
+                    "Subsidy Application Rejected",
+                    $"Hello {driverName},\n\nYour subsidy has been REJECTED.\n\nReason: {reason}\n\nThank you."
+                );
 
             // Success message
             MessageBox.Show(
@@ -254,15 +293,27 @@ namespace PantawidPasada
             string driverId = dataGridView1.SelectedRows[0].Cells["driver_id"].Value.ToString();
             string driverName = dataGridView1.SelectedRows[0].Cells["First Name"].Value.ToString()
                               + " " + dataGridView1.SelectedRows[0].Cells["Last Name"].Value.ToString();
-
+            string email = dataGridView1.SelectedRows[0].Cells["email"].Value.ToString();
             // Confirm before On Hold
             DialogResult confirm = MessageBox.Show(
-                $"Are you sure you want to put On Hold the subsidy for:\n\n{driverName}?",
-                "Confirm Approval",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
+    $"Are you sure you want to put on hold the subsidy for:\n\n{driverName}?",
+    "Confirm On Hold",
+    MessageBoxButtons.YesNo,
+    MessageBoxIcon.Question);
 
             if (confirm != DialogResult.Yes) return;
+
+            // 🔥 ASK FOR REASON
+            InputReasonForm reasonForm = new InputReasonForm("On Hold Reason");
+            reasonForm.ShowDialog();
+
+            string reason = reasonForm.ReasonText;
+
+            if (string.IsNullOrWhiteSpace(reason))
+            {
+                MessageBox.Show("On Hold cancelled: no reason provided.");
+                return;
+            }
 
             // Update the database
             string connStr = dataBaseDetails.connStr;
@@ -271,12 +322,19 @@ namespace PantawidPasada
             {
                 conn.Open();
 
-                string query = "UPDATE driverAccs SET subsidy_stats = 'On Hold' WHERE driver_id = @id";
+                string query = "UPDATE driverAccs SET subsidy_stats = 'On Hold', reason = @reason WHERE driver_id = @id";
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@id", driverId);
+                cmd.Parameters.AddWithValue("@reason", reason);
                 cmd.ExecuteNonQuery();
             }
+
+            emailService.SendEmail(
+                    email,
+                    "Subsidy Application put On Hold",
+                    $"Hello {driverName},\n\nYour subsidy has been ON HOLD.\n\nReason: {reason}\n\nThank you."
+                );
 
             // Success message
             MessageBox.Show(
@@ -303,15 +361,27 @@ namespace PantawidPasada
             string driverId = dataGridView1.SelectedRows[0].Cells["driver_id"].Value.ToString();
             string driverName = dataGridView1.SelectedRows[0].Cells["First Name"].Value.ToString()
                               + " " + dataGridView1.SelectedRows[0].Cells["Last Name"].Value.ToString();
-
+            string email = dataGridView1.SelectedRows[0].Cells["email"].Value.ToString();
             // Confirm before Under Review
             DialogResult confirm = MessageBox.Show(
-                $"Are you sure you want to put Under Review the subsidy for:\n\n{driverName}?",
-                "Confirm Approval",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
+    $"Are you sure you want to put Under Review the subsidy for:\n\n{driverName}?",
+    "Confirm Under Review",
+    MessageBoxButtons.YesNo,
+    MessageBoxIcon.Question);
 
             if (confirm != DialogResult.Yes) return;
+
+            // 🔥 ASK FOR REASON
+            InputReasonForm reasonForm = new InputReasonForm("Under Review Reason");
+            reasonForm.ShowDialog();
+
+            string reason = reasonForm.ReasonText;
+
+            if (string.IsNullOrWhiteSpace(reason))
+            {
+                MessageBox.Show("Under Review cancelled: no reason provided.");
+                return;
+            }
 
             // Update the database
             string connStr = dataBaseDetails.connStr;
@@ -320,12 +390,19 @@ namespace PantawidPasada
             {
                 conn.Open();
 
-                string query = "UPDATE driverAccs SET subsidy_stats = 'Under Review' WHERE driver_id = @id";
+                string query = "UPDATE driverAccs SET subsidy_stats = 'Under Review', reason = @reason WHERE driver_id = @id";
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@id", driverId);
+                cmd.Parameters.AddWithValue("@reason", reason);
                 cmd.ExecuteNonQuery();
             }
+
+            emailService.SendEmail(
+                    email,
+                    "Subsidy Application put Under Review",
+                    $"Hello {driverName},\n\nYour subsidy has been UNDER REVIEW.\n\nReason: {reason}\n\nThank you."
+                );
 
             // Success message
             MessageBox.Show(
@@ -336,6 +413,74 @@ namespace PantawidPasada
 
             // Refresh the DataGridView to remove the approved driver from the list
             driverInfo.LoadDriversToDataGrid(dataGridView1);
+        }
+
+        private DataTable SearchDrivers(string keyword)
+        {
+            string connStr = dataBaseDetails.connStr;
+            DataTable dt = new DataTable();
+
+            using (MySqlConnection conn = new MySqlConnection(connStr))
+            {
+                conn.Open();
+
+                string query = @"
+        SELECT 
+            driver_id,
+            last_name AS 'Last Name',
+            first_name AS 'First Name',
+            IFNULL(LEFT(middle_name, 1), '') AS 'M.I',
+            email AS 'Email',
+            subsidy_stats AS 'Subsidy Status'
+        FROM driverAccs
+        WHERE subsidy_stats IN ('Pending','Under Review','On Hold')
+          AND (
+                first_name LIKE @search
+             OR last_name LIKE @search
+             OR CONCAT(first_name, ' ', last_name) LIKE @search
+          )";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@search", "%" + keyword + "%");
+
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    da.Fill(dt);
+                }
+            }
+
+            return dt;
+        }
+
+        private void searchDriver_TextChanged(object sender, EventArgs e)
+        {
+            string keyword = searchDriver.Text.Trim();
+
+            if (string.IsNullOrEmpty(keyword) || keyword == "Search driver...")
+            {
+                driverInfo.LoadDriversToDataGrid(dataGridView1);
+                return;
+            }
+
+            dataGridView1.DataSource = SearchDrivers(keyword);
+        }
+
+        private void searchDriver_MouseEnter(object sender, EventArgs e)
+        {
+            if (searchDriver.Text == "Search driver...")
+            {
+                searchDriver.Text = "";
+                searchDriver.ForeColor = Color.Black;
+            }
+        }
+
+        private void searchDriver_MouseLeave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(searchDriver.Text))
+            {
+                searchDriver.Text = "Search driver...";
+                searchDriver.ForeColor = Color.Gray;
+            }
         }
     }
 }

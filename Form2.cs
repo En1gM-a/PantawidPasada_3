@@ -77,15 +77,43 @@ namespace PantawidPasada
 
         private void next_Click(object sender, EventArgs e)
         {
+            // 🔥 STEP-SPECIFIC VALIDATION
             if (steps[currentStep] == personalInfo)
+            {
+                if (!personalInfo.ISFilledUp())
+                {
+                    MessageBox.Show("Please fill up all required fields.", "Incomplete Information",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 personalInfo.FillData(userData);
-
+            }
             else if (steps[currentStep] == contact)
+            {
+                if (!contact.ISfilled())
+                {
+                    MessageBox.Show("Please fill up all required fields.", "Incomplete Information",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 contact.FillData(userData);
-
+            }
             else if (steps[currentStep] == vehicleInfo)
-                vehicleInfo.FillData(userData);
+            {
+                if (!vehicleInfo.ISfilled())
+                {
+                    MessageBox.Show("Please fill up all required fields.", "Incomplete Information",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
+                vehicleInfo.FillData(userData);
+                
+            }
+
+            // 🔥 MOVE TO NEXT STEP
             if (currentStep < steps.Length - 1)
             {
                 currentStep++;
@@ -97,12 +125,35 @@ namespace PantawidPasada
             }
             else
             {
-                saveDataBase.SaveToDB(userData);
+                bool success = saveDataBase.SaveToDB(userData);
+
+                if (!success)
+                {
+                    MessageBox.Show(
+                        "Account already exists.\nYou will be redirected to the first step.",
+                        "Signup Failed",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+
+                    // 🔥 RESET FORM
+                    currentStep = 0;
+                    userData = new UserData();
+                    ShowStep(currentStep);
+                    return;
+                }
+
                 MessageBox.Show(
-                    "Sign up successful! Please log in to continue.",
-                    "Account Created",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+    "Sign up successful!\n\n" +
+    "IMPORTANT NOTICE:\n" +
+    "Your account details are locked for security purposes.\n" +
+    "Username and personal information cannot be modified after registration.\n" +
+    "Password recovery is handled through the system administrator.\n\n" +
+    "Please log in to continue.",
+    "Account Created",
+    MessageBoxButtons.OK,
+    MessageBoxIcon.Information);
+
                 this.Hide();
                 Form1 form1 = new Form1();
                 form1.ShowDialog();

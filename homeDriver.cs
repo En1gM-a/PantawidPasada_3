@@ -14,6 +14,7 @@ namespace PantawidPasada
     {
         private UserData userData;
         fuelPriceData fuelPrice = new fuelPriceData();
+        private bool isClicked = false;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn(
@@ -42,11 +43,12 @@ namespace PantawidPasada
                 button1.Visible = false;
             }
 
+
         }
 
         private void StylePanel(Panel pnl, int radius = 20)
         {
-            pnl.BackColor = Color.FromArgb(248, 250, 252); // same as textbox
+
             pnl.Region = Region.FromHrgn(
                 CreateRoundRectRgn(0, 0, pnl.Width, pnl.Height, radius, radius)
             );
@@ -171,7 +173,11 @@ namespace PantawidPasada
         private void setUpHome()
         {
             panel1.BackColor = Color.FromArgb(255, 210, 90);//warm yelloe
+            panel12.BackColor = Color.FromArgb(255, 210, 90);//warm yellow
+            label41.ForeColor = Color.FromArgb(255, 210, 90);//warm yellow
+            label45.ForeColor = Color.FromArgb(30, 58, 95);
             label1.ForeColor = Color.FromArgb(30, 58, 95);//dark blue
+            label4.ForeColor = Color.FromArgb(30, 58, 95);//dark blue
             label2.ForeColor = Color.FromArgb(30, 58, 95);
             label3.ForeColor = Color.FromArgb(30, 58, 95);
             label9.ForeColor = Color.FromArgb(30, 58, 95);
@@ -204,7 +210,8 @@ namespace PantawidPasada
             label4.Text = $"{userData.FirstName} {userData.MiddleName} {userData.LastName}";
             label5.Text = $"Plate number: {userData.PlateNumber} | {userData.VehicleType}";
             label7.Text = $"{userData.Phone} | {userData.Email}";
-            if (userData.subsidyStatus == "Approved")
+            label45.Text = userData.reason;
+            if (userData.subsidyStatus == "Approved" || userData.subsidyStatus == "Received")
                 label8.ForeColor = Color.FromArgb(76, 175, 80); // green
             else if (userData.subsidyStatus == "Rejected")
                 label8.ForeColor = Color.FromArgb(244, 67, 54); // red
@@ -225,6 +232,7 @@ namespace PantawidPasada
             StylePanel(panel4, 20);
             StyleLabel(label36, 20);
             StyleLabel(label37, 20);
+            StylePanel(panel12, 20);
 
         }
 
@@ -239,5 +247,14 @@ namespace PantawidPasada
                 label8.ForeColor = Color.FromArgb(255, 193, 7);
             }
         }
+
+        private void label8_MouseClick_1(object sender, MouseEventArgs e)
+        {
+            isClicked = !isClicked; // toggle true/false
+
+            panel12.Visible = isClicked;
+            panel12.Enabled = isClicked;
+        }
+
     }
 }

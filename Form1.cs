@@ -251,7 +251,7 @@ namespace PantawidPasada
                 }
                 else if(isFuel)
                 {
-                    homePetroncs fuelPanel = new homePetroncs(currentFuel);
+                    homeFuelEditor fuelPanel = new homeFuelEditor(currentFuel);
                     fuelPanel.ShowDialog();
                     this.Close();
                 }

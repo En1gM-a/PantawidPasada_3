@@ -75,6 +75,15 @@ namespace PantawidPasada
             data.VehicleType = vehicleType.Text;
         }
 
+        public bool ISfilled()
+        {
+            if(string.IsNullOrWhiteSpace(vehicleType.Text) || string.IsNullOrWhiteSpace(DriverLicense.Text) || string.IsNullOrWhiteSpace(PlateNo.Text))
+            {
+                return false;
+            }
+            return true;
+        }
+
         private void vehicleInfo_Load(object sender, EventArgs e)
         {
 

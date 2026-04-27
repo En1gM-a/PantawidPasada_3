@@ -215,7 +215,7 @@
             Controls.Add(pictureBox6);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Log In";
+            Text = "Pantawid Pasada";
             Load += Form1_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

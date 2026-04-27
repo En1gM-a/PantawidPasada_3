@@ -115,6 +115,7 @@
             accountAdmin.TabIndex = 7;
             accountAdmin.Text = "Account";
             accountAdmin.UseVisualStyleBackColor = true;
+            accountAdmin.Click += accountAdmin_Click;
             accountAdmin.MouseLeave += accountAdmin_MouseLeave;
             accountAdmin.MouseHover += accountAdmin_MouseHover;
             // 
@@ -144,7 +145,7 @@
             fuelPriceAdmin.Name = "fuelPriceAdmin";
             fuelPriceAdmin.Size = new Size(360, 91);
             fuelPriceAdmin.TabIndex = 5;
-            fuelPriceAdmin.Text = "Manage Fuel Prices";
+            fuelPriceAdmin.Text = "Monitor Fuel Prices";
             fuelPriceAdmin.UseVisualStyleBackColor = true;
             fuelPriceAdmin.Click += fuelPriceAdmin_Click;
             fuelPriceAdmin.MouseLeave += fuelPriceAdmin_MouseLeave;

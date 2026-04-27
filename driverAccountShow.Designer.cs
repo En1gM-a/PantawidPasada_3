@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(driverAccountShow));
             panel1 = new Panel();
             label1 = new Label();
             label6 = new Label();
@@ -72,9 +73,14 @@
             label57 = new Label();
             label58 = new Label();
             label59 = new Label();
+            panel4 = new Panel();
+            label31 = new Label();
+            label32 = new Label();
+            label33 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
+            panel4.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -99,7 +105,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(94, 224);
+            label6.Location = new Point(94, 298);
             label6.Name = "label6";
             label6.Size = new Size(289, 37);
             label6.TabIndex = 5;
@@ -109,7 +115,7 @@
             // 
             label5.AutoSize = true;
             label5.BackColor = Color.Gold;
-            label5.Location = new Point(81, 201);
+            label5.Location = new Point(81, 275);
             label5.Name = "label5";
             label5.Size = new Size(7, 60);
             label5.TabIndex = 4;
@@ -145,7 +151,7 @@
             panel2.Controls.Add(label4);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(label2);
-            panel2.Location = new Point(81, 276);
+            panel2.Location = new Point(81, 338);
             panel2.Name = "panel2";
             panel2.Size = new Size(528, 659);
             panel2.TabIndex = 6;
@@ -155,7 +161,7 @@
             label30.AutoSize = true;
             label30.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label30.ForeColor = Color.Black;
-            label30.Location = new Point(304, 584);
+            label30.Location = new Point(247, 584);
             label30.Name = "label30";
             label30.Size = new Size(83, 21);
             label30.TabIndex = 26;
@@ -166,7 +172,7 @@
             label29.AutoSize = true;
             label29.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label29.ForeColor = Color.Black;
-            label29.Location = new Point(304, 513);
+            label29.Location = new Point(247, 513);
             label29.Name = "label29";
             label29.Size = new Size(83, 21);
             label29.TabIndex = 25;
@@ -177,7 +183,7 @@
             label28.AutoSize = true;
             label28.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label28.ForeColor = Color.Black;
-            label28.Location = new Point(304, 441);
+            label28.Location = new Point(247, 441);
             label28.Name = "label28";
             label28.Size = new Size(83, 21);
             label28.TabIndex = 24;
@@ -188,7 +194,7 @@
             label27.AutoSize = true;
             label27.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label27.ForeColor = Color.Black;
-            label27.Location = new Point(304, 368);
+            label27.Location = new Point(247, 368);
             label27.Name = "label27";
             label27.Size = new Size(83, 21);
             label27.TabIndex = 23;
@@ -199,7 +205,7 @@
             label26.AutoSize = true;
             label26.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label26.ForeColor = Color.Black;
-            label26.Location = new Point(304, 302);
+            label26.Location = new Point(247, 302);
             label26.Name = "label26";
             label26.Size = new Size(83, 21);
             label26.TabIndex = 22;
@@ -210,7 +216,7 @@
             label25.AutoSize = true;
             label25.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label25.ForeColor = Color.Black;
-            label25.Location = new Point(304, 236);
+            label25.Location = new Point(247, 236);
             label25.Name = "label25";
             label25.Size = new Size(83, 21);
             label25.TabIndex = 21;
@@ -221,7 +227,7 @@
             label24.AutoSize = true;
             label24.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label24.ForeColor = Color.Black;
-            label24.Location = new Point(304, 167);
+            label24.Location = new Point(247, 167);
             label24.Name = "label24";
             label24.Size = new Size(83, 21);
             label24.TabIndex = 20;
@@ -232,7 +238,7 @@
             label23.AutoSize = true;
             label23.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label23.ForeColor = Color.Black;
-            label23.Location = new Point(304, 102);
+            label23.Location = new Point(247, 102);
             label23.Name = "label23";
             label23.Size = new Size(83, 21);
             label23.TabIndex = 19;
@@ -243,7 +249,7 @@
             label22.AutoSize = true;
             label22.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label22.ForeColor = Color.Black;
-            label22.Location = new Point(304, 41);
+            label22.Location = new Point(247, 41);
             label22.Name = "label22";
             label22.Size = new Size(83, 21);
             label22.TabIndex = 18;
@@ -459,7 +465,7 @@
             panel3.Controls.Add(label50);
             panel3.Controls.Add(label56);
             panel3.Controls.Add(label57);
-            panel3.Location = new Point(734, 276);
+            panel3.Location = new Point(734, 338);
             panel3.Name = "panel3";
             panel3.Size = new Size(528, 257);
             panel3.TabIndex = 29;
@@ -469,7 +475,7 @@
             label37.AutoSize = true;
             label37.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label37.ForeColor = Color.Black;
-            label37.Location = new Point(304, 167);
+            label37.Location = new Point(209, 167);
             label37.Name = "label37";
             label37.Size = new Size(83, 21);
             label37.TabIndex = 20;
@@ -480,7 +486,7 @@
             label38.AutoSize = true;
             label38.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label38.ForeColor = Color.Black;
-            label38.Location = new Point(304, 102);
+            label38.Location = new Point(209, 102);
             label38.Name = "label38";
             label38.Size = new Size(83, 21);
             label38.TabIndex = 19;
@@ -491,7 +497,7 @@
             label39.AutoSize = true;
             label39.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label39.ForeColor = Color.Black;
-            label39.Location = new Point(304, 41);
+            label39.Location = new Point(209, 41);
             label39.Name = "label39";
             label39.Size = new Size(83, 21);
             label39.TabIndex = 18;
@@ -567,7 +573,7 @@
             // 
             label58.AutoSize = true;
             label58.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label58.Location = new Point(747, 224);
+            label58.Location = new Point(747, 298);
             label58.Name = "label58";
             label58.Size = new Size(270, 37);
             label58.TabIndex = 28;
@@ -577,17 +583,61 @@
             // 
             label59.AutoSize = true;
             label59.BackColor = Color.Gold;
-            label59.Location = new Point(734, 201);
+            label59.Location = new Point(734, 275);
             label59.Name = "label59";
             label59.Size = new Size(7, 60);
             label59.TabIndex = 27;
             label59.Text = "\r\n\r\n\r\n\r\n";
+            // 
+            // panel4
+            // 
+            panel4.BackColor = Color.Khaki;
+            panel4.Controls.Add(label31);
+            panel4.Controls.Add(label32);
+            panel4.Controls.Add(label33);
+            panel4.Location = new Point(81, 155);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(1181, 105);
+            panel4.TabIndex = 38;
+            // 
+            // label31
+            // 
+            label31.AutoSize = true;
+            label31.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label31.ForeColor = Color.DimGray;
+            label31.Location = new Point(28, 16);
+            label31.Name = "label31";
+            label31.Size = new Size(123, 20);
+            label31.TabIndex = 3;
+            label31.Text = "Security Notice: ";
+            // 
+            // label32
+            // 
+            label32.AutoSize = true;
+            label32.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label32.ForeColor = Color.DimGray;
+            label32.Location = new Point(28, 16);
+            label32.Name = "label32";
+            label32.Size = new Size(1033, 80);
+            label32.TabIndex = 2;
+            label32.Text = resources.GetString("label32.Text");
+            // 
+            // label33
+            // 
+            label33.AutoSize = true;
+            label33.BackColor = Color.Gold;
+            label33.Location = new Point(-2, 0);
+            label33.Name = "label33";
+            label33.Size = new Size(7, 120);
+            label33.TabIndex = 0;
+            label33.Text = "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n";
             // 
             // driverAccountShow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gainsboro;
+            Controls.Add(panel4);
             Controls.Add(panel3);
             Controls.Add(label58);
             Controls.Add(panel2);
@@ -604,6 +654,8 @@
             panel2.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -654,5 +706,9 @@
         private Label label57;
         private Label label58;
         private Label label59;
+        private Panel panel4;
+        private Label label31;
+        private Label label32;
+        private Label label33;
     }
 }

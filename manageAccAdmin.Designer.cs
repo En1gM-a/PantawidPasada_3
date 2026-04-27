@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            resetPass = new Button();
             label2 = new Label();
             panel2 = new Panel();
             panel4 = new Panel();
@@ -57,6 +58,8 @@
             textBox2 = new TextBox();
             textBox1 = new TextBox();
             panel3 = new Panel();
+            searchGov = new TextBox();
+            searchAdmin = new TextBox();
             radioButton8 = new RadioButton();
             radioButton7 = new RadioButton();
             label23 = new Label();
@@ -73,21 +76,45 @@
             updateStatus = new Button();
             label20 = new Label();
             label21 = new Label();
+            panel5 = new Panel();
+            radioButton12 = new RadioButton();
+            confirmReset = new Button();
+            newPass = new TextBox();
+            radioButton11 = new RadioButton();
+            radioButton10 = new RadioButton();
+            radioButton9 = new RadioButton();
+            searchUser = new TextBox();
+            label24 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel4.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            panel5.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.Controls.Add(resetPass);
             panel1.Controls.Add(label2);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(1375, 183);
             panel1.TabIndex = 3;
+            // 
+            // resetPass
+            // 
+            resetPass.FlatAppearance.BorderSize = 0;
+            resetPass.FlatStyle = FlatStyle.Flat;
+            resetPass.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            resetPass.Location = new Point(1012, 77);
+            resetPass.Name = "resetPass";
+            resetPass.Size = new Size(292, 57);
+            resetPass.TabIndex = 2;
+            resetPass.Text = "Reset Password";
+            resetPass.UseVisualStyleBackColor = true;
+            resetPass.Click += resetPass_Click;
             // 
             // label2
             // 
@@ -393,6 +420,8 @@
             // panel3
             // 
             panel3.BackColor = Color.White;
+            panel3.Controls.Add(searchGov);
+            panel3.Controls.Add(searchAdmin);
             panel3.Controls.Add(radioButton8);
             panel3.Controls.Add(radioButton7);
             panel3.Controls.Add(label23);
@@ -411,6 +440,26 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(637, 760);
             panel3.TabIndex = 22;
+            // 
+            // searchGov
+            // 
+            searchGov.Location = new Point(327, 54);
+            searchGov.Name = "searchGov";
+            searchGov.Size = new Size(294, 23);
+            searchGov.TabIndex = 33;
+            searchGov.TextChanged += searchGov_TextChanged;
+            searchGov.MouseEnter += searchGov_MouseEnter;
+            searchGov.MouseLeave += searchGov_MouseLeave;
+            // 
+            // searchAdmin
+            // 
+            searchAdmin.Location = new Point(16, 54);
+            searchAdmin.Name = "searchAdmin";
+            searchAdmin.Size = new Size(294, 23);
+            searchAdmin.TabIndex = 32;
+            searchAdmin.TextChanged += searchAdmin_TextChanged;
+            searchAdmin.MouseEnter += searchAdmin_MouseEnter;
+            searchAdmin.MouseLeave += searchAdmin_MouseLeave;
             // 
             // radioButton8
             // 
@@ -440,7 +489,7 @@
             // 
             label23.AutoSize = true;
             label23.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label23.Location = new Point(420, 53);
+            label23.Location = new Point(421, 23);
             label23.Name = "label23";
             label23.Size = new Size(102, 20);
             label23.TabIndex = 30;
@@ -450,7 +499,7 @@
             // 
             label22.AutoSize = true;
             label22.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label22.Location = new Point(107, 53);
+            label22.Location = new Point(107, 23);
             label22.Name = "label22";
             label22.Size = new Size(62, 20);
             label22.TabIndex = 22;
@@ -577,11 +626,122 @@
             label21.TabIndex = 23;
             label21.Text = "Add Admin/Government Account";
             // 
+            // panel5
+            // 
+            panel5.BackColor = Color.WhiteSmoke;
+            panel5.Controls.Add(label24);
+            panel5.Controls.Add(radioButton12);
+            panel5.Controls.Add(confirmReset);
+            panel5.Controls.Add(newPass);
+            panel5.Controls.Add(radioButton11);
+            panel5.Controls.Add(radioButton10);
+            panel5.Controls.Add(radioButton9);
+            panel5.Controls.Add(searchUser);
+            panel5.Location = new Point(421, 194);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(476, 455);
+            panel5.TabIndex = 24;
+            panel5.Visible = false;
+            // 
+            // radioButton12
+            // 
+            radioButton12.AutoSize = true;
+            radioButton12.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            radioButton12.ForeColor = Color.Black;
+            radioButton12.Location = new Point(271, 162);
+            radioButton12.Name = "radioButton12";
+            radioButton12.Size = new Size(139, 24);
+            radioButton12.TabIndex = 33;
+            radioButton12.TabStop = true;
+            radioButton12.Text = "Fuel Price Editor";
+            radioButton12.UseVisualStyleBackColor = true;
+            // 
+            // confirmReset
+            // 
+            confirmReset.FlatAppearance.BorderSize = 0;
+            confirmReset.FlatStyle = FlatStyle.Flat;
+            confirmReset.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            confirmReset.Location = new Point(47, 357);
+            confirmReset.Name = "confirmReset";
+            confirmReset.Size = new Size(292, 50);
+            confirmReset.TabIndex = 3;
+            confirmReset.Text = "Reset Password";
+            confirmReset.UseVisualStyleBackColor = true;
+            confirmReset.Click += confirmReset_Click;
+            // 
+            // newPass
+            // 
+            newPass.Location = new Point(47, 296);
+            newPass.Name = "newPass";
+            newPass.Size = new Size(364, 23);
+            newPass.TabIndex = 32;
+            newPass.MouseEnter += newPass_MouseEnter;
+            newPass.MouseLeave += newPass_MouseLeave;
+            // 
+            // radioButton11
+            // 
+            radioButton11.AutoSize = true;
+            radioButton11.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            radioButton11.ForeColor = Color.Black;
+            radioButton11.Location = new Point(271, 120);
+            radioButton11.Name = "radioButton11";
+            radioButton11.Size = new Size(78, 24);
+            radioButton11.TabIndex = 31;
+            radioButton11.TabStop = true;
+            radioButton11.Text = "ADMIN";
+            radioButton11.UseVisualStyleBackColor = true;
+            // 
+            // radioButton10
+            // 
+            radioButton10.AutoSize = true;
+            radioButton10.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            radioButton10.ForeColor = Color.Black;
+            radioButton10.Location = new Point(47, 163);
+            radioButton10.Name = "radioButton10";
+            radioButton10.Size = new Size(194, 24);
+            radioButton10.TabIndex = 30;
+            radioButton10.TabStop = true;
+            radioButton10.Text = "GOVERNMENT OFFICIAL";
+            radioButton10.UseVisualStyleBackColor = true;
+            // 
+            // radioButton9
+            // 
+            radioButton9.AutoSize = true;
+            radioButton9.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            radioButton9.ForeColor = Color.Black;
+            radioButton9.Location = new Point(47, 120);
+            radioButton9.Name = "radioButton9";
+            radioButton9.Size = new Size(78, 24);
+            radioButton9.TabIndex = 29;
+            radioButton9.TabStop = true;
+            radioButton9.Text = "DRIVER";
+            radioButton9.UseVisualStyleBackColor = true;
+            // 
+            // searchUser
+            // 
+            searchUser.Location = new Point(47, 244);
+            searchUser.Name = "searchUser";
+            searchUser.Size = new Size(364, 23);
+            searchUser.TabIndex = 0;
+            searchUser.MouseEnter += searchUser_MouseEnter;
+            searchUser.MouseLeave += searchUser_MouseLeave;
+            // 
+            // label24
+            // 
+            label24.AutoSize = true;
+            label24.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label24.Location = new Point(47, 37);
+            label24.Name = "label24";
+            label24.Size = new Size(163, 30);
+            label24.TabIndex = 29;
+            label24.Text = "Reset Password";
+            // 
             // manageAccAdmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gainsboro;
+            Controls.Add(panel5);
             Controls.Add(label21);
             Controls.Add(label20);
             Controls.Add(panel3);
@@ -600,6 +760,8 @@
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            panel5.ResumeLayout(false);
+            panel5.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -651,5 +813,17 @@
         private Panel panel4;
         private RadioButton radioButton8;
         private RadioButton radioButton7;
+        private TextBox searchGov;
+        private TextBox searchAdmin;
+        private Button resetPass;
+        private Panel panel5;
+        private RadioButton radioButton11;
+        private RadioButton radioButton10;
+        private RadioButton radioButton9;
+        private TextBox searchUser;
+        private Button confirmReset;
+        private TextBox newPass;
+        private RadioButton radioButton12;
+        private Label label24;
     }
 }

@@ -117,4 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label36.Text" xml:space="preserve">
+    <value>The application has been verified and meets all eligibility requirements. Approval is hereby granted.
+
+The application failed to meet the required criteria due to deficiencies or invalid information. It is hereby denied.
+
+The application is placed on hold pending submission of required documents or clarification of provided information.
+
+The application is undergoing verification. Final determination is pending further evaluation.
+
+The subsidy has been released and duly received by the applicant. Processing is complete.</value>
+  </data>
 </root>

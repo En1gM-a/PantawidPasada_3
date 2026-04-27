@@ -33,6 +33,7 @@
             passWord = new TextBox();
             email = new TextBox();
             phoneNum = new TextBox();
+            label6 = new Label();
             SuspendLayout();
             // 
             // label4
@@ -53,6 +54,7 @@
             confirmPass.Name = "confirmPass";
             confirmPass.Size = new Size(402, 35);
             confirmPass.TabIndex = 23;
+            confirmPass.TextChanged += confirmPass_TextChanged;
             // 
             // passWord
             // 
@@ -78,10 +80,24 @@
             phoneNum.Size = new Size(402, 35);
             phoneNum.TabIndex = 19;
             // 
+            // label6
+            // 
+            label6.AccessibleRole = AccessibleRole.None;
+            label6.AutoSize = true;
+            label6.BackColor = Color.Transparent;
+            label6.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.Red;
+            label6.Location = new Point(244, 343);
+            label6.Name = "label6";
+            label6.Size = new Size(175, 15);
+            label6.TabIndex = 27;
+            label6.Text = "*The password does not match!";
+            // 
             // contact
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(label6);
             Controls.Add(label4);
             Controls.Add(confirmPass);
             Controls.Add(passWord);
@@ -101,5 +117,6 @@
         private TextBox passWord;
         private TextBox email;
         private TextBox phoneNum;
+        private Label label6;
     }
 }

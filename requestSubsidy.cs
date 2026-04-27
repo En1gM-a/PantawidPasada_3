@@ -22,6 +22,7 @@ namespace PantawidPasada
         {
             InitializeComponent();
             userData = data; // store it
+            this.BackColor = Color.FromArgb(30, 58, 95);
 
             button1.Region = Region.FromHrgn(
                 CreateRoundRectRgn(0, 0, button1.Width, button1.Height, 20, 20));

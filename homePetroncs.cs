@@ -8,12 +8,12 @@ using System.Windows.Forms;
 
 namespace PantawidPasada
 {
-    public partial class homePetroncs : Form
+    public partial class homeFuelEditor : Form
     {
 
         SlantedButton slantedButton = new SlantedButton();
         private fuelEditorData fuelData;
-        public homePetroncs(fuelEditorData data)
+        public homeFuelEditor(fuelEditorData data)
         {
             InitializeComponent();
 
@@ -31,8 +31,8 @@ namespace PantawidPasada
 
         private void setUpPetron()
         {
-            label5.ForeColor = Color.FromArgb(255, 0, 0);
-            label6.ForeColor = Color.FromArgb(255, 0, 0);
+            label5.ForeColor = Color.White;
+            label6.ForeColor = Color.White;
 
             if (fuelData.name == "Petron")
             {
@@ -42,7 +42,7 @@ namespace PantawidPasada
             else if (fuelData.name == "Caltex")
             {
                 label5.Text = "Caltex";
-                pictureBox3.Image = Properties.Resources.caltexLogo;
+                pictureBox3.Image = Properties.Resources.Untitled_design__2_;
             }
             else if (fuelData.name == "Shell")
             {
